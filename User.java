@@ -47,7 +47,7 @@ public abstract class User {
     }
 
     public void setLasName(String lasName) {
-        this.lastName = lasName;
+        this.lastName = lastName;
     }
 
     public void setPassword(String password) {
