@@ -1,11 +1,11 @@
 
 
 public abstract class User {
-    String firstName;
-    String lastName;
-    String userID;
-    String password;
-    Date birthDate;
+    Private String firstName;
+    Private String lastName;
+    Private String userID;
+    Private String password;
+    Private Date birthDate;
 
     public User (String givenFirstName, String givenLastName, String givenID, String password, int birthYear,
                  int birthDay,int birthMonth)
