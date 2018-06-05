@@ -18,6 +18,7 @@ public abstract class User {
 
     }
 
+    //Accessors and Mutators
     public String getFirstName() {
         return firstName;
     }
@@ -57,5 +58,46 @@ public abstract class User {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+
+    //Methods
+
+    public int compareToAge (User other)
+    {
+        if (birthDate.getYear() > other.birthDate.getYear()) 
+            return -1;
+        else if (birthDate.getYear() < other.birthDate.getYear())
+            return 1;
+        else if (birthDate.getMonth() < other.birthDate.getMonth())
+            return 1;
+        else if (birthDate.getMonth() > other.birthDate.getMonth())
+            return -1;
+        else if (birthDate.getDay() < other.birthDate.getDay())
+            return 1;
+        else if (birthDate.getDay() > other.birthDate.getDay())
+            return -1;
+        else 
+            return 0;
+        
+    }
+    
+    public int compareToFirstName (User other)
+    {
+        return (this.getFirstName().compareToIgnoreCase(other.getFirstName()));
+    }
+    
+    public int  compareToLastName (User other)
+    {
+        return (this.getLastName().compareToIgnoreCase(other.getLastName()));
+    }
+    
+    public String toString ()
+    {
+        String output;
+        output = "Full Name: " + getFirstName() + " " + getLastName() + "\n";
+        output = output + "User ID: " + getUserID() + "\n";
+        output = output + "Birth Date: " + getBirthDate();
+        return output;
+    }
+
 
 }
