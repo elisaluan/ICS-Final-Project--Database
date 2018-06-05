@@ -7,6 +7,7 @@ public abstract class User {
     Private String password;
     Private Date birthDate;
 
+    //Contructors
     public User (String givenFirstName, String givenLastName, String givenID, String password, int birthYear,
                  int birthDay,int birthMonth)
     {
@@ -18,7 +19,7 @@ public abstract class User {
 
     }
 
-    //Accessors and Mutators
+    //Accessors
     public String getFirstName() {
         return firstName;
     }
@@ -39,6 +40,7 @@ public abstract class User {
         return userID;
     }
 
+    //Mutators
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
@@ -60,7 +62,8 @@ public abstract class User {
     }
 
     //Methods
-
+    
+    //Compares the age of implicit and explicit objects and returns (1) if 
     public int compareToAge (User other)
     {
         if (birthDate.getYear() > other.birthDate.getYear())
