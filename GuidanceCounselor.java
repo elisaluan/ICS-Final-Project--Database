@@ -1,2 +1,3 @@
-public class GuidanceCounselor extends Teacher {
+public class GuidanceCounsellor extends Teacher {
+  //aple
 }
