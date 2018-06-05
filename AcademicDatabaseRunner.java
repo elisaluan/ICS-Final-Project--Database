@@ -1,4 +1,4 @@
 public class AcademicDatabaseRunner {
-  public static voic main (String [] args ) {
+  public static void main (String[] args) {
   }
 }
