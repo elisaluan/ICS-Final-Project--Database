@@ -63,7 +63,9 @@ public abstract class User {
 
     //Methods
     
-    //Compares the age of implicit and explicit objects and returns (1) if 
+    //Compares the age of implicit and explicit objects and returns (1) if the implicit student is older than explicit student
+    //returns (-1) if implicit student is younger than explicit student and returns (0) if implicit student is the same age
+    //as explicit student
     public int compareToAge (User other)
     {
         if (birthDate.getYear() > other.birthDate.getYear())
