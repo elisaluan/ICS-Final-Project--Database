@@ -6,9 +6,68 @@ public class MyAssessment {
   private double assessmentDen;
   private double weight;
   
+  //Constructor
+  public MyAssessment(){
+    assessmentName = "";
+    assessmentMarkPer = 0;
+    assessmentNum = 0;
+    assessmentDen = 0;
+    weight = 0;
+  }
+  
+  public MyAssessment(String assessmentName, double assessmentMarkPer, double assessmentNum, double assessmentDen, double weight){
+    this.assessmentName = assessmentName;
+    this.assessmentMarkPer = assessmentMarkPer;
+    this.assessmentNum = assessmentNum;
+    this.assessmentDen = assessmentDen;
+    this.weight = weight;
+  }
+  
+  //Accessors
+  public String getAssessmentName(){
+    return assessmentName;
+  }
+  
+  public double getAssessmentMarkPer(){
+    return assessmentMarkPer;
+  }
+  
+  public double getAssessmentMarkNum(){
+    return assessmentMarkNum;
+  }
+  
+  public double getAssessmentMarkDen(){
+    return assessmentMarkDen;
+  }
+  
+  public double weight(){
+    return weight;
+  }
+  
+  //Mutators
+  public void setAssessmentName(String assessmentName){
+    this.assessmentName = assessmentName;
+  }
+  
+  public void setAssessmentMarkPer(double assessmentMarkPer){
+    this.assessmentMarkPer = assessmentMarkPer;
+  }
+  
+  public void setAssessmentMarkNum(double assessmentMarkNum){
+    this.assessmentMarkNum = assessmentMarkNum;
+  }
+  
+  public void setAssessmentMarkDen(double assessmentMarkDen){
+    this.assessmentMarkDen = assessmentMarkDen;
+  }
+  
+  public void setWeight(double weight){
+    this.weight = weight;
+  }
+  
   //Method to calculate the mark
   public void calcMark(){
-    assessmentMarkPer = assessmentNum/assessmentDen;
+    assessmentMarkPer = assessmentNum/assessmentDen * 100;
   }
   
   //Method to return all info as a string
