@@ -1,5 +1,3 @@
-
-
 public abstract class User {
     Private String firstName;
     Private String lastName;
@@ -17,49 +15,49 @@ public abstract class User {
         userID = givenID;
         this.password = password;
 
-    }
+    }//Constructor
 
     //Accessors
     public String getFirstName() {
         return firstName;
-    }
+    }// First name accessor
 
     public String getLastName() {
         return lastName;
-    }
+    }// Last name accessor
 
     public Date getBirthDate() {
         return birthDate;
-    }
+    }//Birth date accessor
 
     public String getPassword() {
         return password;
-    }
+    }// Password accessor
 
     public String getUserID() {
         return userID;
-    }
+    }// User ID accessor
 
     //Mutators
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-    }
+    }// Birth day mutator
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
+    }// First name mutator
 
     public void setLasName(String lasName) {
         this.lastName = lasName;
-    }
+    }// Last name mutator
 
     public void setPassword(String password) {
         this.password = password;
-    }
+    }// Password mutator
 
     public void setUserID(String userID) {
         this.userID = userID;
-    }
+    }// User ID mutator
 
     //Methods
     
@@ -96,7 +94,7 @@ public abstract class User {
             return 0;
         else
             return -1
-    }
+    }// compareToFirstName method
 
     //Compares the last name of implicit and explicit user object and returns (1) if the implicit object last name is 
     //alphabetically first and returns (0) if the two last names are the same. It also returns (-1) if the implicit
@@ -110,7 +108,7 @@ public abstract class User {
         else
             return -1
         
-    }
+    }// compareToLastName method
 
     //Outputs the information of the user in a line by line format.
     public String toString ()
@@ -120,7 +118,7 @@ public abstract class User {
         output = output + "User ID: " + getUserID() + "\n";
         output = output + "Birth Date: " + getBirthDate();
         return output;
-    }
+    }// toString method
 
 
-}
+}// User class
