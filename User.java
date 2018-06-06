@@ -85,16 +85,34 @@ public abstract class User {
 
     }
 
+    //Compares the first name of implicit and explicit user object and returns (1) if the implicit object first name is 
+    //alphabetically first and returns (0) if the two names are the same. It also returns (-1) if the implicit
+    //object first name is alphabeticaly last compared to the explicit object first name.
     public int compareToFirstName (User other)
     {
-        return (this.getFirstName().compareToIgnoreCase(other.getFirstName()));
+        if (this.getFirstName().compareToIgnoreCase(other.getFirstName()) > 0)
+            return 1;
+        else if (this.getFirstName().compareToIgnoreCase(other.getFirstName()) == 0)
+            return 0;
+        else
+            return -1
     }
 
+    //Compares the last name of implicit and explicit user object and returns (1) if the implicit object last name is 
+    //alphabetically first and returns (0) if the two last names are the same. It also returns (-1) if the implicit
+    //object last name is alphabeticaly last compared to the explicit object last name.
     public int  compareToLastName (User other)
     {
-        return (this.getLastName().compareToIgnoreCase(other.getLastName()));
+        if (this.getLastName().compareToIgnoreCase(other.getLastName()) > 0)
+            return 1;
+        else if (this.getLastName().compareToIgnoreCase(other.getLastName()) == 0)
+            return 0;
+        else
+            return -1
+        
     }
 
+    //Outputs the information of the user in a line by line format.
     public String toString ()
     {
         String output;
