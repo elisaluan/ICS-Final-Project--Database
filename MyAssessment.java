@@ -40,7 +40,7 @@ public class MyAssessment {
     return assessmentMarkDen;
   }
   
-  public double weight(){
+  public double getWeight(){
     return weight;
   }
   
