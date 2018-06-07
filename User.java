@@ -1,9 +1,9 @@
 public abstract class User {
-    Private String firstName;
-    Private String lastName;
-    Private String userID;
-    Private String password;
-    Private Date birthDate;
+    private String firstName;
+    private String lastName;
+    private String userID;
+    private String password;
+    private Date birthDate;
 
     //Contructors
     public User (String givenFirstName, String givenLastName, String givenID, String password, int birthYear,
@@ -93,7 +93,7 @@ public abstract class User {
         else if (this.getFirstName().compareToIgnoreCase(other.getFirstName()) == 0)
             return 0;
         else
-            return -1
+            return -1;
     }// compareToFirstName method
 
     //Compares the last name of implicit and explicit user object and returns (1) if the implicit object last name is 
@@ -106,7 +106,7 @@ public abstract class User {
         else if (this.getLastName().compareToIgnoreCase(other.getLastName()) == 0)
             return 0;
         else
-            return -1
+            return -1;
         
     }// compareToLastName method
 
