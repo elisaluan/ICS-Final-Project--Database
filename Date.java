@@ -42,13 +42,26 @@ public class Date {
     //if current date is later than comparing date, -1 will be returned
     //if both dates are the same, 0 will be returned
     public compareToDay int (Date current, Date comparing){
-        if ( (current.year < comparing.year) || (current.year == comparing.year && current.month < comparing.month) || (current.year==comparing.year && current.month==comparing.month && current.day){
+        if ( (current.year < comparing.year) || (current.year == comparing.year && current.month < comparing.month) || (current.year==comparing.year && current.month==comparing.month && current.day < comparing.day) ){
             return 1;
-        } else if(current.year > comparing.year){
+        } 
+        else if(( comparing.year < current.year) || (comparing.year == current.year && comparing.month < current.month) || (comparing.year==current.year && comparing.month==current.month && comparing.day < current.day) ){
             return -1;
+        }else{
+            return 0;   
         }
     }//compareToDay method
-    public toString String(Date formatDate){
-        return (formatDate.day + formatDate.month + formatDate.year);
-    }
+    
+    //converts the called date from int to all in one string  (DDMMYYYY) date format
+    public toString String(Date theDate){
+        if (theDate.day < 10 && theDate.month > 10){
+            return ("0" + theDate.day + theDate.month + theDate.year);
+        }
+        else if (theDate.day > 10 && theDate.month < 10){  
+            return("" + theDate.day + "0" + theDate.month + theDate.year);
+        }
+        else if (theDate.day > 10 && theDate.month > 10){
+            return("" + theDate.day + theDate.month + theDate.year);
+        }
+    }//toString method
 }//Date class
