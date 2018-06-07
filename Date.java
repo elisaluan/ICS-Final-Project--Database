@@ -53,7 +53,7 @@ public class Date {
     }//compareToDay method
     
     //converts the called date from int to all in one string  (DDMMYYYY) date format
-    public String toString(){
+    public void toString(){
         if (day < 10 && month > 10){
             return ("0" + day + month + year);
         }
