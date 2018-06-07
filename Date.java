@@ -1,7 +1,7 @@
 public class Date {
-    int day;
-    int month;
-    int year;
+    private int day;
+    private int month;
+    private int year;
 
     //constructor
     public Date (int day, int month, int year)
