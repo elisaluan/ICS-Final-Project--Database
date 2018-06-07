@@ -1,7 +1,7 @@
 public class MyAssessment {
   //Initializes fields
   private String assessmentName;
-  private double assessmentMarkPer;
+  private double assessmentMark;
   private double assessmentNum;
   private double assessmentDen;
   private double weight;
@@ -9,15 +9,15 @@ public class MyAssessment {
   //Constructor
   public MyAssessment(){
     assessmentName = "";
-    assessmentMarkPer = 0;
+    assessmentMark = 0;
     assessmentNum = 0;
     assessmentDen = 0;
     weight = 0;
   }
   
-  public MyAssessment(String assessmentName, double assessmentMarkPer, double assessmentNum, double assessmentDen, double weight){
+  public MyAssessment(String assessmentName, double assessmentMark, double assessmentNum, double assessmentDen, double weight){
     this.assessmentName = assessmentName;
-    this.assessmentMarkPer = assessmentMarkPer;
+    this.assessmentMark = assessmentMark;
     this.assessmentNum = assessmentNum;
     this.assessmentDen = assessmentDen;
     this.weight = weight;
@@ -28,8 +28,8 @@ public class MyAssessment {
     return assessmentName;
   }
   
-  public double getAssessmentMarkPer(){
-    return assessmentMarkPer;
+  public double getAssessmentMark(){
+    return assessmentMark;
   }
   
   public double getAssessmentMarkNum(){
@@ -49,8 +49,8 @@ public class MyAssessment {
     this.assessmentName = assessmentName;
   }
   
-  public void setAssessmentMarkPer(double assessmentMarkPer){
-    this.assessmentMarkPer = assessmentMarkPer;
+  public void setAssessmentMark(double assessmentMark){
+    this.assessmentMark = assessmentMark;
   }
   
   public void setAssessmentMarkNum(double assessmentMarkNum){
@@ -67,12 +67,12 @@ public class MyAssessment {
   
   //Method to calculate the mark
   public void calcMark(){
-    assessmentMarkPer = assessmentNum/assessmentDen * 100;
+    assessmentMark = assessmentNum/assessmentDen * 100;
   }
   
   //Method to return all info as a string
   public String toString(){
-    String s = "Assessment name: " + assessmentName + "\nAssessment percent mark: " + assessmentMarkPer;
+    String s = "Assessment name: " + assessmentName + "\nAssessment percent mark: " + assessmentMark;
     s+= "\nAssessment mark: " + assessmentNum + "/" + assessmentDen + "\nWeight: " + weight;
     return s;
   }
