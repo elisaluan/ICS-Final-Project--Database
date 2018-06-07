@@ -32,15 +32,15 @@ public class MyAssessment {
     return assessmentMarkPer;
   }
   
-  public double getAssessmentMarkNum(){
+  public double getAssessmentNum(){
     return assessmentNum;
   }
   
-  public double getAssessmentMarkDen(){
+  public double getAssessmentDen(){
     return assessmentDen;
   }
   
-  public double weight(){
+  public double getWeight(){
     return weight;
   }
   
@@ -53,12 +53,12 @@ public class MyAssessment {
     this.assessmentMarkPer = assessmentMarkPer;
   }
   
-  public void setAssessmentMarkNum(double assessmentMarkNum){
-    this.assessmentNum = assessmentMarkNum;
+  public void setAssessmentNum(double assessmentNum){
+    this.assessmentNum = assessmentNum;
   }
   
-  public void setAssessmentMarkDen(double assessmentMarkDen){
-    this.assessmentDen = assessmentMarkDen;
+  public void setAssessmentDen(double assessmentDen){
+    this.assessmentDen = assessmentDen;
   }
   
   public void setWeight(double weight){
