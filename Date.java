@@ -41,7 +41,7 @@ public class Date {
     //if current date is earlier than comparing date, 1 will be returned
     //if current date is later than comparing date, -1 will be returned
     //if both dates are the same, 0 will be returned
-    public compareToDay int (Date current, Date comparing){
+    public int compareToDay (Date current, Date comparing){
         if ( (current.year < comparing.year) || (current.year == comparing.year && current.month < comparing.month) || (current.year==comparing.year && current.month==comparing.month && current.day < comparing.day) ){
             return 1;
         } 
@@ -53,15 +53,15 @@ public class Date {
     }//compareToDay method
     
     //converts the called date from int to all in one string  (DDMMYYYY) date format
-    public toString String(Date theDate){
-        if (theDate.day < 10 && theDate.month > 10){
-            return ("0" + theDate.day + theDate.month + theDate.year);
+    public String toString(){
+        if (day < 10 && month > 10){
+            return ("0" + day + month + year);
         }
-        else if (theDate.day > 10 && theDate.month < 10){  
-            return("" + theDate.day + "0" + theDate.month + theDate.year);
+        else if (day > 10 && month < 10){  
+            return("" + day + "0" + month + year);
         }
-        else if (theDate.day > 10 && theDate.month > 10){
-            return("" + theDate.day + theDate.month + theDate.year);
+        else if (day > 10 && month > 10){
+            return("" + day + month + year);
         }
     }//toString method
 }//Date class
