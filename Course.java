@@ -16,8 +16,14 @@ public class Course {
         teacher = assignedTeacher;
         courseCode = assignedCourseCode;
         complete = courseComplete;
-        
-        
+        average = new CourseStatistics(/*Add fields to pass in*/);
+        for (int i = 0; i < listOfStudents.size(); i ++)
+        {
+            if ((/*student course code*/).equals (courseCode))
+            {
+                addStudentToCourse(listOfStudents.get(i));
+            }
+        }
 
     }
 
