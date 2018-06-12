@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class School {
     String schoolName;
     String schoolID;
-    ArrayList <User> listOfStudents = new ArrayList <User>();
-    ArrayList <User> listOfTeachers = new ArrayList <User>();
-    ArrayList <User> listOfGuidanceCouns = new ArrayList <User>();
+    ArrayList <Student> listOfStudents = new ArrayList <User>();
+    ArrayList <Teacher> listOfTeachers = new ArrayList <User>();
+    ArrayList <GuidanceCounselor> listOfGuidanceCouns = new ArrayList <User>();
     User principal;
     Student user;
 

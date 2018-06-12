@@ -1,11 +1,9 @@
-import java.util.*;
-
 public class Student {
 	
 	// FIELDS
 	
 	private int numCourses;
-	private creditSummary transcript;
+	private CreditSummary transcript;
 	private int grade;
 	private boolean esl;
 	private boolean internationalStudent;
@@ -15,7 +13,7 @@ public class Student {
 	
 	// CONSTRUCTOR
 	
-	public Student(int courses, creditSummary transcript, int level, boolean esl, boolean international, boolean iep)
+	public Student(int courses, CreditSummary transcript, int level, boolean esl, boolean international, boolean iep)
 	{
 		numCourses = courses;
 		this.transcript = transcript;
@@ -34,7 +32,7 @@ public class Student {
 		return numCourses;
 	}
 	
-	public creditSummary getTranscript()
+	public CreditSummary getTranscript()
 	{
 		return transcript;
 	}
@@ -68,7 +66,7 @@ public class Student {
 		numCourses = num;
 	}
 	
-	public void setTranscript (creditSummary transcript)
+	public void setTranscript (CreditSummary transcript)
 	{
 		this.transcript = transcript;
 	}
@@ -97,7 +95,15 @@ public class Student {
 	
 	// METHODS
 	
+	public void viewCourseMark(Course course)
+	{
+		
+	}
 	
+	public void viewTranscript()
+	{
+		System.out.println(transcript.toString());
+	}
 	
 	
 	
