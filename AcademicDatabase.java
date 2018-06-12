@@ -10,12 +10,12 @@ public class AcademicDatabase {
       boolean sorted = false;
 
       //Outer for loop for bubble sort
-      for (int i = 0; i < listOfStudents.size() && sorted == false; i++)
+      for (int i = 0; i < tdsbSchoolList.get(school).listOfStudents.size() && sorted == false; i++)
       {
         sorted = true;
 
         //Inner for loop for bubble sort
-        for (int j = 0; j < listOfStudents.size() - i - 1; j++)
+        for (int j = 0; j < tdsbSchoolList.get(school).listOfStudents.size() - i - 1; j++)
         {
           //Initializes two Students to be sorted
           Student stud1 = tdsbSchoolList.get(school).listOfStudents.get(j);
@@ -45,12 +45,12 @@ public class AcademicDatabase {
       boolean sorted = false;
 
       //Outer for loop for bubble sort
-      for (int i = 0; i < listOfStudents.size() && sorted == false; i++)
+      for (int i = 0; i < tdsbSchoolList.get(school).listOfStudents.size() && sorted == false; i++)
       {
         sorted = true;
 
         //Inner for loop for bubble sort
-        for (int j = 0; j < listOfStudents.size() - i - 1; j++)
+        for (int j = 0; j < tdsbSchoolList.get(school).listOfStudents.size() - i - 1; j++)
         {
           //Initializes two Students to be sorted
           Student stud1 = tdsbSchoolList.get(school).listOfStudents.get(j);
