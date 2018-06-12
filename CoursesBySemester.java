@@ -1,37 +1,54 @@
-import java.util.*;
+import java.util.ArrayList;
 
-public class CoursesBySemester {
+public class CoursesByYear {
 	
 	// FIELDS
-
-	private ArrayList<MyCourse> courseList = new ArrayList<MyCourse>();
+	
+	private final int NUMSEMESTERS = 2;
+	private CoursesBySemester[] semesterList = new CoursesBySemester[NUMSEMESTERS];
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	// CONSTRUCTOR
+	// CONSTRUCTORS
 	
-	public CoursesBySemester(ArrayList<MyCourse> courses)
+	public CoursesByYear(CoursesBySemester[] courses)
 	{
-		int length = courses.size();
-		
-		for (int i = 0 ; i < length ; i++)
+		for(int i = 0 ; i < NUMSEMESTERS ; i++)
 		{
-			courseList.add(courses.get(i));
+			semesterList[i] = courses[i];
 		}
 	}
-	
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Accessors
+
+	public CoursesBySemester[] getSemesterList() {
+		return semesterList;
+	}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// METHODS
-	
+
+	public double calcYearAverage ()
+	{
+		double average, totalSum = 0;
+		for (int i = 0; i < NUMSEMESTERS; i ++)
+		{
+			totalSum = totalSum + semesterList[i].calcSemAverage();
+		}
+
+		average = totalSum/NUMSEMESTERS;
+		return average;
+	}
+
 	public String toString()
 	{
 		String output = "";
-		for(int i = 0 ; i < courseList.size() ; i++)
+		for(int i = 0 ; i < NUMSEMESTERS ; i++)
 		{
-			output += courseList.get(i).getCourseCode() + " - " + courseList.get(i).getCurrentAverage() + "\n";
+			output += semesterList[i];
 		}
 		return output;
 	}
-	
 }
