@@ -26,7 +26,7 @@ public class CoursesByYear {
 		String output = "";
 		for(int i = 0 ; i < NUMSEMESTERS ; i++)
 		{
-			output += semesterList[i].toString();
+			output += semesterList[i];
 		}
 		return output;
 	}

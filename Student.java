@@ -1,4 +1,4 @@
-public class Student {
+public class Student extends User{
 	
 	// FIELDS
 	
@@ -13,8 +13,10 @@ public class Student {
 	
 	// CONSTRUCTOR
 	
-	public Student(int courses, CreditSummary transcript, int level, boolean esl, boolean international, boolean iep)
+	public Student(int courses, CreditSummary transcript, int level, boolean esl, boolean international, boolean iep, String firstName, 
+			String lastName, String userID, String password, int birthday, int birthMonth, int birthYear)
 	{
+		super (firstName, lastName, userID, password, birthday, birthMonth, birthYear);
 		numCourses = courses;
 		this.transcript = transcript;
 		grade = level;
@@ -102,7 +104,7 @@ public class Student {
 	
 	public void viewTranscript()
 	{
-		System.out.println(transcript.toString());
+		System.out.println(transcript);
 	}
 	
 	
