@@ -35,6 +35,7 @@ public class AcademicDatabase {
       }
     }
   }
+  
   //Class to sort students at every school by their current year's average in decreasing order by bubble sort
   public void sortStudentHL()
   {
@@ -70,5 +71,27 @@ public class AcademicDatabase {
         }
       }
     }
+  }
+  
+  //Method to change all names to lower case
+  public String standardizeName(String name)
+  {
+	  //returns the name all in lower case
+	  return name.toLowerCase();
+  }
+  
+  //Method to take in an ID and check if no other user has this ID
+  public boolean checkUnique(String ID)
+  {
+    //loops through all users
+    for (int userIndex = 0; userIndex < allUsers.size(); userIndex++)
+    {
+      //returns false if a user already has this ID
+      if (ID == allUsers.get(userIndex).getUserID())
+        return false;
+    }
+
+    //if no other user has this ID, returns true
+    return true;
   }
 }
