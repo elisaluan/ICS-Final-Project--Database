@@ -94,4 +94,26 @@ public class AcademicDatabase {
     //if no other user has this ID, returns true
     return true;
   }
+	
+  private String digitGenerator(){
+  }
+  
+  //calls digitGenerator to generate an ID for student, also checks whether the generated ID is unique
+  //checks if id is unique, if not, regenerates id
+  public String studentIDGenerator (){
+     String generateStudentID;
+     do {
+        generateStudentID = digitGenerator();
+	}while(!(checkUnique(generateStudentID)));
+     return generateStudentID;
+  }
+  //calls digitGenerator to generate an ID for teacher
+  //checks if id is unique, if not, regenerates id
+  public String teacherIDGenerator (){
+     String generateTeacherID;
+     do {
+	generateTeacherID = digitGenerator();
+	}while(!(checkUnique(generateTeacherID)));
+     return generateTeacherID; 
+  }
 }
