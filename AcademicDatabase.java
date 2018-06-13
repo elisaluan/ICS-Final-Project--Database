@@ -1,5 +1,74 @@
 public class AcademicDatabase {
   
+	//Initializes the array lists
+	ArrayList<School> tdsbSchoolList;
+	ArrayList<Admin> adminList;
+	ArrayList<User> allUsers;
+	
+	//Initializes constant for length of userID
+	final int IDLENGTH = 9;
+	
+	private fileInputOutput saveAndLoad;
+	
+	//Constructors
+	public AcademicDatabase()
+	{
+		tdsbSchoolList = new ArrayList<School>();
+		adminList = new ArrayList<Admin>();
+		allUsers = new ArrayList<User>();
+		saveAndLoad = null;
+	}
+	
+	public AcademicDatabase(ArrayList<School> tdsbSchoolList, ArrayList<Admin> adminList, ArrayList<User> allUsers, fileInputOutput saveAndLoad)
+	{
+		this.tdsbSchoolList = tdsbSchoolList;
+		this.adminList = adminList;
+		this.allUsers = allUsers;
+		this.saveAndLoad = saveAndLoad;
+	}
+	
+	//Accessors
+	public ArrayList<School> getTdsbSchoolList()
+	{
+		return tdsbSchoolList;
+	}
+	
+	public ArrayList<Admin> getAdminList()
+	{
+		return adminList;
+	}
+	
+	public ArrayList<User> getAllUsers()
+	{
+		return allUsers;
+	}
+	
+	public fileInputOutput getSaveAndLoad()
+	{
+		return saveAndLoad;
+	}
+	
+	//Mutators
+	public void setTdsbSchoolList(ArrayList<School> tdsbSchoolList)
+	{
+		this.tdsbSchoolList = tdsbSchoolList;
+	}
+	
+	public void setAdminList(ArrayList<Admin> adminList)
+	{
+		this.adminList = adminList;
+	}
+	
+	public void setAllUsers(ArrayList<User> allUsers)
+	{
+		this.allUsers = allUsers;
+	}
+	
+	public void setSaveAndLoad(fileInputOutput saveAndLoad)
+	{
+		this.saveAndLoad = saveAndLoad;
+	}
+	
   //Class to sort students at every school by their last name in alphabetical order using bubble sort
   public void sortStudentLastAZ()
   {
