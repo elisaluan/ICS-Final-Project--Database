@@ -94,8 +94,11 @@ public class AcademicDatabase {
     //if no other user has this ID, returns true
     return true;
   }
-	
+  //generates a number between 100000000 to 999999999 	
   private String digitGenerator(){
+     Random rand = new Random();
+     int generatedID = rand.nextInt((999999999-100000000) +1) + 100000000;
+     return "" + generatedID;
   }
   
   //calls digitGenerator to generate an ID for student, also checks whether the generated ID is unique
