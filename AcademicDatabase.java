@@ -163,4 +163,51 @@ public class AcademicDatabase {
     //if no other user has this ID, returns true
     return true;
   }
-}
+	
+ //generating an id between 100000000 and 999999999
+  private String digitGenerator(){
+      Random rand = new Random();
+      int generatedID = rand.nextInt((999999999-100000000) +1) + 100000000;
+      return "" + generatedID;	  
+  }
+	
+//calls digitGenerator to generate an ID for student, also checks whether the generated ID is unique
+  //checks if id is unique, if not, regenerates id
+  public String studentIDGenerator (){
+     String generateStudentID;
+     do {
+        generateStudentID = digitGenerator();
+     }while(!(checkUnique(generateStudentID)));
+     return generateStudentID;
+  }
+  
+  //calls digitGenerator to generate an ID for teacher
+  //checks if id is unique, if not, regenerates id
+  public String teacherIDGenerator (){
+     String generateTeacherID;
+     do {
+	generateTeacherID = digitGenerator();
+	}while(!(checkUnique(generateTeacherID)));
+     return generateTeacherID;
+  }
+  
+  //calls digitGenerator to generate an ID for Principal object
+  //regenerates ID if not unique
+  public String principalIDGenerator (){
+	     String generatePrincipalID;
+	     do {
+		generatePrincipalID = digitGenerator();
+		}while(!(checkUnique(generatePrincipalID)));
+	     return generatePrincipalID;
+  }
+  
+  //calls digitGenerator to generate an ID for School object
+  //regenerates ID if not unique
+  public String schoolIDGenerator () {
+	  String generateSchoolID;
+	  do {
+		  generateSchoolID = digitGenerator();
+	  }while (!(checkUnique(generateSchoolID)));
+  }
+	
+}//AcademicDatabase class
