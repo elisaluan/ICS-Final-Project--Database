@@ -14,6 +14,19 @@ public class CoursesBySemester {
    }
    
    // method
+
+   public double calcSemAverage ()
+   {
+      double average, totalSum = 0;
+
+      for (int i = 0; i < courseList.size(); i  ++)
+      {
+         totalSum = totalSum = courseList.get(i).getWeightedAverage();
+      }
+      average = totalSum/ courseList.size();
+
+      return average;
+   }
    public String toString () {
       return "";
    }
