@@ -1,51 +1,37 @@
-public class Principal {
-  
-  //Constructor
-  public Principal(){
-    super(firstName, lastName, userID, password, birthDate)
-  }
-  
-  // accessors
-   public String getFirstName () {
-      return firstName;
-   }
-   public String getLastName () {
-      return lastName;
-   }
-   public String getUserID () {
-      return userID;
-   }
-   public String getPassword () {
-      return password;
-   }
-   public Date getBirthDate () {
-      return birthDate;
-   }
-   
-   // mutators
-   public void setFirstName (String firstName) {
-      this.firstName = firstName;
-   }
-   public void setLastName (String lastName) {
-      this.lastName = lastName;
-   }
-   public void setUserID (String userID) {
-      this.userID = userID;
-   }
-   public void setPassword (String password) {
-      this.password = password;
-   }
-   public void setBirthDate (Date birthDate) {
-      this.birthDate = birthDate;
-   }
+public class Principal extends User {
+    private School schoolList;
 
-   public void addTeacher(Teacher t){
-     if (AcademicDatabase.newTeacher() && FileInputOutput.store(t))
-       System.out.println("This teacher has been added.");
-     else 
-       System.out.println("Error. This teacher has not been added.");
-   }
-  
+    public Principal (School other)
+    {
+        schoolList = other;
+    }
 
-  
+
+    public School getSchoolList() {
+        return schoolList;
+    }
+
+    public void setSchoolList(School schoolList) {
+        this.schoolList = schoolList;
+    }
+
+    public void addTeacher (Teacher teacher)
+    {
+        schoolList.listOfTeachers.add(teacher);
+    }
+    public  void removeTeacher (String teacherID)
+    {
+        for (int i = 0; i < schoolList.listOfTeachers.size(); i ++)
+        {
+            if (teacherID.equalsIgnoreCase(schoolList.listOfTeachers.get(i).getUserID()))
+            {
+                schoolList.listOfTeachers.remove(i);
+            }
+        }
+    }
+
+    public String toString ()
+    {
+        return "";
+    }
 }
