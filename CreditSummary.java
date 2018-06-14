@@ -18,4 +18,22 @@ public class CreditSummary {
    public String toString () {
       return "";
    }
+
+   public MyCourse searchByCourse (String course)
+   {
+      for (int i =0; i < yearList.size(); i ++)
+      {
+         for (int j = 0; j < yearList.get(i).getSemesterList().length; j ++)
+         {
+            for (int k = 0; k < yearList.get(i).getSemesterList()[j].getCourseList().size(); k ++)
+            {
+               if (yearList.get(i).getSemesterList()[j].getCourseList().get(k).getCourseCode().equalsIgnoreCase(course))
+               {
+                  return (yearList.get(i).getSemesterList()[j].getCourseList().get(k));
+               }
+            }
+         }
+      }
+      return null;
+   }
 }
