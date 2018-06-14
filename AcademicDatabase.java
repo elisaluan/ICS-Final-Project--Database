@@ -22,7 +22,7 @@ public class AcademicDatabase {
           Student stud2 = tdsbSchoolList.get(school).listOfStudents.get(j+1);
 
           //Determines if the first student should be put after the second student
-          if (stud1.getFirstName.charAt(0) > stud2.getFirstName.charAt(0))
+          if (stud1.compareToLastName(stud2 == -1))
           {
             //If a sort happens sets indicates that the array is not yet sorted
             sorted = false;
