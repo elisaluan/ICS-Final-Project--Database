@@ -21,9 +21,23 @@ public class Teacher extends User {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // ACCESSORS
-    
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Course> getCourseArrayList() {
+        return courseArrayList;
+    }
+
+    public static int getNUMCOURSES() {
+        return NUMCOURSES;
+    }
+
+    public String[] getCoursesTeaching() {
+        return coursesTeaching;
+    }
+
+    public Date getBeginTeaching() {
+        return beginTeaching;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // MUTATORS
     
