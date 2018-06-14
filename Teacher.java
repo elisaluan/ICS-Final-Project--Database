@@ -3,7 +3,7 @@ import java.util.*;
 public class Teacher {
    private final int MAX_COURSES = 3;
    private int numTeaching;
-   private ArrayList<String> coursesTeaching = new ArrayList<String> ();
+   private ArrayList<Course> coursesTeaching = new ArrayList<Course> ();
    private Date beginTeach;
    
    // accessors
@@ -26,5 +26,9 @@ public class Teacher {
    }
    public void setBeginTeach(Date beginTeach) {
       this.beginTeach = beginTeach;
+   }
+   
+   public void updateAverage (Student forStudent, Course thisCourse, double toAverage) {
+      forStu
    }
 }
