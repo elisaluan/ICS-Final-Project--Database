@@ -8,6 +8,7 @@
 import java.util.*;
 
 public class MyCourse {
+   private String courseCode;
    private Student student;
    private CourseStatistics currentCourseStats;
    private static int PASS_BOUND = 50;
@@ -49,6 +50,10 @@ public class MyCourse {
    }
    public ArrayList<MyAssessment> getMarksList () {
       return marksList;
+   }
+   public String getCourseCode ()
+   {
+      return courseCode;
    }
    
    // methods
