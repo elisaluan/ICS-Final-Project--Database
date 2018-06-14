@@ -293,12 +293,11 @@ public class Display {
                         "A) View courses (list format)\n" +
                                 "B) View course (assessments, grades, students) by course code\n" +
                                 "C) View students in a course\n" +
-                                "D) View all students in a course (list)\n" +
-                                "E) Search for Students In Course (by ID and name or by ID only)\n" +
-                                "F) Sort Class (given course ID) - Alphabetical, Average\n" +
-                                "G) Search in class (Given Course ID)\n" +
-                                "H) Input new assessment/quiz/test\n" +
-                                "I) Edit assessment/quiz/test\n" + "J) To Logout Please type \"logout\" or choose this option\n");
+                                "D) Search for Students In Course (by ID and name or by ID only)\n" +
+                                "E) Sort Class (given course ID) - Alphabetical, Average\n" +
+                                "F) Search in class (Given Course ID)\n" +
+                                "G) Input new assessment/quiz/test\n" +
+                                "H) Edit assessment/quiz/test\n" + "I) To Logout Please type \"logout\" or choose this option\n");
                 choice = input.nextLine();
 
                 if (choice.equalsIgnoreCase("A")) {
@@ -409,22 +408,18 @@ public class Display {
                                 System.out.print("Please enter student's last name: ");
                                 lastName = input.next();
 
-                                for (int i = 0; i < schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                        getCourseArrayList().get(numInput).getStudentInCourseList().size(); i ++)
+                                if (schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).getCourseArrayList().
+                                        get(numInput).searchStudentByName(firstName, lastName) != null)
                                 {
-                                    foundFirstName = schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                            getCourseArrayList().get(numInput).getStudentInCourseList().get(i).getStudent()
-                                            .getFirstName();
-                                    foundLastName = schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                            getCourseArrayList().get(numInput).getStudentInCourseList().get(i).getStudent()
-                                            .getLastName();
-
-                                    if (firstName.equalsIgnoreCase(foundFirstName) && lastName.equalsIgnoreCase(foundLastName))
-                                    {
-                                        nameFound = true;
-                                        System.out.println(schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                                getCourseArrayList().get(numInput).getStudentInCourseList().get(i));
-                                    }
+                                    nameFound = true;
+                                    System.out.println(schoolArrayList.get(schoolIndex).listOfTeachers.
+                                            get(userIndex).getCourseArrayList().get(numInput).
+                                            searchStudentByName(firstName, lastName));
+                                }
+                                else
+                                {
+                                    System.out.println("Name not found please try again.");
+                                    System.out.println("");
                                 }
                             }
 
@@ -438,19 +433,18 @@ public class Display {
                                 System.out.println("Please enter student ID: ");
                                 choice = input.next();
 
-                                for (int i = 0; i < schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                        getCourseArrayList().get(numInput).getStudentInCourseList().size(); i ++)
+                                if (schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).getCourseArrayList().
+                                        get(numInput).searchStudentById(choice) != null)
                                 {
-                                    idBeingSearched = schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                            getCourseArrayList().get(numInput).getStudentInCourseList().get(i).getStudent()
-                                            .getUserID();
-
-                                    if (idBeingSearched.equalsIgnoreCase(choice))
-                                    {
-                                        idFound = true;
-                                        System.out.println(schoolArrayList.get(schoolIndex).listOfTeachers.get(userIndex).
-                                                getCourseArrayList().get(numInput).getStudentInCourseList().get(i));
-                                    }
+                                    nameFound = true;
+                                    System.out.println(schoolArrayList.get(schoolIndex).listOfTeachers.
+                                            get(userIndex).getCourseArrayList().get(numInput).
+                                            searchStudentById(choice));
+                                }
+                                else
+                                {
+                                    System.out.println("ID not found please try again.");
+                                    System.out.println("");
                                 }
                             }
                         }
@@ -461,24 +455,22 @@ public class Display {
                     }
                     validInput = false;
 
-                } else if (choice.equalsIgnoreCase("D")) {
-                    //This is the same as option B
 
-                } else if (choice.equalsIgnoreCase("E")) {
+
+                } else if (choice.equalsIgnoreCase("D")) {
 
                     //This is the same as Option C
 
+                } else if (choice.equalsIgnoreCase("E")) {
+
+
                 } else if (choice.equalsIgnoreCase("F")) {
-
-
 
                 } else if (choice.equalsIgnoreCase("G")) {
 
                 } else if (choice.equalsIgnoreCase("H")) {
 
-                } else if (choice.equalsIgnoreCase("I")) {
-
-                } else if (choice.equalsIgnoreCase("logout") || choice.equalsIgnoreCase("J")) {
+                } else if (choice.equalsIgnoreCase("logout") || choice.equalsIgnoreCase("I")) {
                     logOut = true;
                 } else {
                     System.out.println("Invalid Input. Please try again");

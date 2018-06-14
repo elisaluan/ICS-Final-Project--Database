@@ -171,13 +171,13 @@ public class AcademicDatabase {
       return "" + generatedID;	  
   }
 	
-//calls digitGenerator to generate an ID for student, also checks whether the generated ID is unique
+  //calls digitGenerator to generate an ID for student, also checks whether the generated ID is unique
   //checks if id is unique, if not, regenerates id
   public String studentIDGenerator (){
      String generateStudentID;
      do {
         generateStudentID = digitGenerator();
-     }while(!(checkUnique(generateStudentID)));
+     }while (!(checkUnique(generateStudentID)));
      return generateStudentID;
   }
   
@@ -186,8 +186,8 @@ public class AcademicDatabase {
   public String teacherIDGenerator (){
      String generateTeacherID;
      do {
-	generateTeacherID = digitGenerator();
-	}while(!(checkUnique(generateTeacherID)));
+	      generateTeacherID = digitGenerator();
+	   }while (!(checkUnique(generateTeacherID)));
      return generateTeacherID;
   }
   
@@ -196,8 +196,8 @@ public class AcademicDatabase {
   public String principalIDGenerator (){
 	     String generatePrincipalID;
 	     do {
-		generatePrincipalID = digitGenerator();
-		}while(!(checkUnique(generatePrincipalID)));
+		      generatePrincipalID = digitGenerator();
+		   }while (!(checkUnique(generatePrincipalID)));
 	     return generatePrincipalID;
   }
   

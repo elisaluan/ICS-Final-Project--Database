@@ -71,8 +71,46 @@ public class Course {
     
 
     //Methods
-    public void addStudentToCourse (Student other)
+    public void sortLastNameAZ ()
     {
-        studentInCourseList.add(/*student my course */);
+
+    }
+    public void sortStudentMarkHL ()
+    {
+
+    }
+    public void sortStudentMarkLH ()
+    {
+
+    }
+    public void sortStudentById ()
+    {
+
+    }
+    public Student highestAvg()
+    {
+
+    }
+
+    public Student searchStudentByName (String firstName, String lastName)
+    {
+
+    }
+
+    public Student searchStudentById (String givenId)
+    {
+
+    }
+    public Student searchStudentByFirstName (String firstName)
+    {
+
+    }
+    public Student searchStudentByLastName (String lastName)
+    {
+
+    }
+    public String toString ()
+    {
+
     }
 }
