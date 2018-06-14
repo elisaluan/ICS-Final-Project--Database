@@ -2,8 +2,8 @@ public class CoursesByYear {
 	
 	// FIELDS
 	
-	private final int NUMSEMESTERS = 2;
-	private CoursesBySemester[] semesterList = new CoursesBySemester[NUMSEMESTERS];
+	private final int NUM_SEMESTERS = 2;
+	private CoursesBySemester[] semesterList = new CoursesBySemester[NUM_SEMESTERS];
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -11,7 +11,7 @@ public class CoursesByYear {
 	
 	public CoursesByYear(CoursesBySemester[] courses)
 	{
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
+		for(int i = 0 ; i < NUM_SEMESTERS ; i++)
 		{
 			semesterList[i] = courses[i];
 		}
@@ -20,7 +20,19 @@ public class CoursesByYear {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// ACCESSORS
-		
+	
+	public CoursesBySemester [] getSemesterList () {
+	      return semesterList;
+	   }
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// MUTATORS
+	
+	public void setSemesterList (CoursesBySemester[] semesterList) {
+	      this.semesterList = semesterList;
+	   }
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// METHODS
@@ -28,10 +40,22 @@ public class CoursesByYear {
 	public String toString()
 	{
 		String output = "";
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
+		for(int i = 0 ; i < NUM_SEMESTERS ; i++)
 		{
 			output += semesterList[i];
 		}
 		return output;
 	}
+
+   public double calcYearAverage ()
+   {
+      double totalSum = 0, average;
+
+      for (int i = 0; i < NUM_SEMESTERS; i ++)
+      {
+         totalSum = semesterList[i].calcSemAverage() + totalSum;
+      }
+      average = totalSum/NUM_SEMESTERS;
+      return average;
+   }
 }

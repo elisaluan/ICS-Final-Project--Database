@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class CreditSummary {
   
@@ -44,5 +44,23 @@ public class CreditSummary {
 	}
 	return output;
   }
-  
+
+   public MyCourse searhByCourse (String course)
+   {
+      for (int i =0; i < yearList.size(); i ++)
+      {
+         for (int j = 0; j < yearList.get(i).getSemesterList().length; j ++)
+         {
+            for (int k = 0; k < yearList.get(i).getSemesterList()[j].getCourseList().size(); k ++)
+            {
+               if (yearList.get(i).getSemesterList()[j].getCourseList().get(k).getCourseCode().equalsIgnoreCase(course))
+               {
+                  return (yearList.get(i).getSemesterList()[j].getCourseList().get(k));
+               }
+            }
+         }
+      }
+      return null;
+   }
 }
+

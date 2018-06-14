@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class School {
@@ -279,15 +280,60 @@ public class School {
     
 
     
-    
-    
-    
-    
+/////////////////////////////////////////////////////////////////
+	//Searching methods begin here
+	//Method to search for student given first name and last name using sequential search. Returns array of matching students
+	public Student[] searchForStudent(String firstName, String lastName)
+	{
+		boolean found = false;
+		int count = 0;
+		Student[] matches = new Student[listOfStudents.size()];
+		for (int i = 0; i < listOfStudents.size() && found == false; i++)
+		{
+			if (listOfStudents.get(i).getFirstName() == firstName && listOfStudents.get(i).getLastName() == lastName)
+			{
+				matches[count] = listOfStudents.get(i);
+				count++;
+			}
+		}    
+    	return matches;
+	}
+	
+	//Method to search for teacher given first name and last name using sequential search. Returns array of matching teachers
+	public Teacher[] searchForTeacher(String firstName, String lastName)
+	{
+		boolean found = false;
+		int count = 0;
+		Teacher[] matches = new Teacher[listOfTeachers.size()];
+		for (int i = 0; i < listOfTeachers.size() && found == false; i++)
+		{
+			if (listOfTeachers.get(i).getFirstName() == firstName && listOfTeachers.get(i).getLastName() == lastName)
+			{
+				matches[count] = listOfTeachers.get(i);
+				count++;
+			}
+		}    
+    	return matches;
+	}
+	
+	//Method to search for guidance counesllor given first name and last name using sequential search. Returns array of matching counsellors
+	public GuidanceCounsellor[] searchForGuidanceCounsellor(String firstName, String lastName)
+	{
+		boolean found = false;
+		int count = 0;
+		GuidanceCounsellor[] matches = new GuidanceCounsellor[listOfGuidanceCouns.size()];
+		for (int i = 0; i < listOfGuidanceCouns.size() && found == false; i++)
+		{
+			if (listOfGuidanceCouns.get(i).getFirstName() == firstName && listOfGuidanceCouns.get(i).getLastName() == lastName)
+			{
+				matches[count] = listOfGuidanceCouns.get(i);
+				count++;
+			}
+		}    
+    	return matches;
+	}
+	
+	
     
 }
-    
-    
-    
-    
-    
-    
+

@@ -1,54 +1,33 @@
-import java.util.ArrayList;
+import java.util.*;
 
-public class CoursesByYear {
-	
-	// FIELDS
-	
-	private final int NUMSEMESTERS = 2;
-	private CoursesBySemester[] semesterList = new CoursesBySemester[NUMSEMESTERS];
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// CONSTRUCTORS
-	
-	public CoursesByYear(CoursesBySemester[] courses)
-	{
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
-		{
-			semesterList[i] = courses[i];
-		}
-	}
+public class CoursesBySemester {
+   private ArrayList<MyCourse> courseList = new ArrayList<MyCourse>();
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Accessors
+   // accessor
+   public ArrayList<MyCourse> getCourseList () {
+      return courseList;
+   }
+   
+   // mutator
+   public void setCourseList (ArrayList<MyCourse> courseList) {
+      this.courseList = courseList;
+   }
+   
+   // method
 
-	public CoursesBySemester[] getSemesterList() {
-		return semesterList;
-	}
+   public double calcSemAverage ()
+   {
+      double average, totalSum = 0;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// METHODS
+      for (int i = 0; i < courseList.size(); i  ++)
+      {
+         totalSum += courseList.get(i).getWeightedAverage();
+      }
+      average = totalSum/ courseList.size();
 
-	public double calcYearAverage ()
-	{
-		double average, totalSum = 0;
-		for (int i = 0; i < NUMSEMESTERS; i ++)
-		{
-			totalSum = totalSum + semesterList[i].calcSemAverage();
-		}
-
-		average = totalSum/NUMSEMESTERS;
-		return average;
-	}
-
-	public String toString()
-	{
-		String output = "";
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
-		{
-			output += semesterList[i];
-		}
-		return output;
-	}
+      return average;
+   }
+   public String toString () {
+      return "";
+   }
 }

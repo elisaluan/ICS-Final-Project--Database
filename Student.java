@@ -1,114 +1,65 @@
-public class Student extends User{
-	
-	// FIELDS
-	
-	private int numCourses;
-	private CreditSummary transcript;
-	private int grade;
-	private boolean esl;
-	private boolean internationalStudent;
-	private boolean iep;
-	
-//////////////////////////////////////////////////////////////////
-	
-	// CONSTRUCTOR
-	
-	public Student(int courses, CreditSummary transcript, int level, boolean esl, boolean international, boolean iep, String firstName, 
-			String lastName, String userID, String password, int birthday, int birthMonth, int birthYear)
-	{
-		super (firstName, lastName, userID, password, birthday, birthMonth, birthYear);
-		numCourses = courses;
-		this.transcript = transcript;
-		grade = level;
-		this.esl = esl;
-		internationalStudent =  international;
-		this.iep = iep;
-	}
+import java.util.*;
 
-/////////////////////////////////////////////////////////////////
-	
-	// ACCESSORS
-	
-	public int getNumCourse()
-	{
-		return numCourses;
-	}
-	
-	public CreditSummary getTranscript()
-	{
-		return transcript;
-	}
-	
-	public int getGrade()
-	{
-		return grade;
-	}
-	
-	public boolean getESL()
-	{
-		return esl;
-	}
-	
-	public boolean getInternationalStudent()
-	{
-		return internationalStudent;
-	}
-	
-	public boolean getIEP()
-	{
-		return iep;
-	}
-	
-///////////////////////////////////////////////////////////////////
-	
-	// MUTATORS
-	
-	public void setNumCourse (int num)
-	{
-		numCourses = num;
-	}
-	
-	public void setTranscript (CreditSummary transcript)
-	{
-		this.transcript = transcript;
-	}
-	
-	public void setGrade(int grade)
-	{
-		this.grade = grade;
-	}
-	
-	public void setESL (boolean ifYes) 
-	{
-		esl = ifYes;
-	}
-	
-	public void setInternatoinalStudent (boolean ifYes)
-	{
-		internationalStudent = ifYes;
-	}
-	
-	public void setIEP (boolean ifYes)
-	{
-		iep = ifYes;
-	}
-
-///////////////////////////////////////////////////////////////////////////////
-	
-	// METHODS
-	
-	public void viewCourseMark(Course course)
-	{
-		
-	}
-	
-	public void viewTranscript()
-	{
-		System.out.println(transcript);
-	}
-	
-	
-	
-	
-	
+public class Student extends User {
+   private int numCourse;
+   private CreditSummary transcript;
+   private int grade;
+   private boolean esl;
+   private boolean internationalStudent;
+   private boolean iep;
+   private ArrayList<MyCourse> coursesTaking = new ArrayList<MyCourse> (); 
+   
+   // accessors
+   public int getNumCourse () {
+      return numCourse;
+   }
+   public CreditSummary getTranscript () {
+      return transcript;
+   }
+   public int getGrade () {
+      return grade;
+   }
+   public boolean getEsl () {
+      return esl;
+   }
+   public boolean getInternationalStudent () {
+      return internationalStudent;
+   }
+   public boolean getIep () {
+      return iep;
+   }
+   public ArrayList<MyCourse> getCoursesTaking () {
+      return coursesTaking;
+   }
+   
+   // mutators
+   public void setNumCourse (int numCourse) {
+      this.numCourse = numCourse;
+   }
+   public void setTranscript (CreditSummary transcript) {
+      this.transcript = transcript;
+   }
+   public void setGrade (int grade) {
+      this.grade = grade;
+   }
+   public void setEsl (boolean esl) {
+      this.esl = esl;
+   }
+   public void setInternationalStudent (boolean internationalStudent) {
+      this.internationalStudent = internationalStudent;
+   }
+   public void setIep (boolean iep) {
+      this.iep = iep;
+   }
+   public void setCoursesTaking (ArrayList<MyCourse> coursesTaking) {
+      this.coursesTaking = coursesTaking;
+   }
+   
+   // methods
+   public void viewCourseMark (MyCourse course) {
+      
+   }
+   
+   public void viewTranscript () {
+   } 
 }
