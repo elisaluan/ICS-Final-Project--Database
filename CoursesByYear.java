@@ -17,4 +17,16 @@ public class CoursesByYear {
    public String toString () {
       return "";
    }
+
+   public double calcYearAverage ()
+   {
+      double totalSum = 0, average;
+
+      for (int i = 0; i < NUM_SEMESTERS; i ++)
+      {
+         totalSum = semesterList[i].calcSemAverage() + totalSum;
+      }
+      average = totalSum/NUM_SEMESTERS;
+      return average;
+   }
 }
