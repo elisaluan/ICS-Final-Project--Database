@@ -136,5 +136,23 @@ public class School {
     	return matches;
 	}
 	
+	//Method to search for guidance counesllor given first name and last name using sequential search. Returns array of matching counsellors
+	public GuidanceCounsellor[] searchForGuidanceCounsellor(String firstName, String lastName)
+	{
+		boolean found = false;
+		int count = 0;
+		GuidanceCounsellor[] matches = new GuidanceCounsellor[listOfGuidanceCounsellor.size()];
+		for (int i = 0; i < listOfGuidanceCouncellor.size() && found = false; i++)
+		{
+			if (listOfGuidanceCounsellor.get(i).getFirstName == firstName && listOfGuidanceCounsellor.get(i).getLastName == lastName)
+			{
+				matches[count] = listOfGuidanceCounsellor.get(i);
+				count++
+			}
+		}    
+    	return matches;
+	}
+	
+	
     
 }
