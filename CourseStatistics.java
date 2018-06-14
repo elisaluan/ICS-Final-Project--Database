@@ -1,114 +1,57 @@
 import java.util.*;
 
-public class CourseStatistics{
- 
-	// FIELDS
-	
-	private double classMean;
-	private double classMedian;
-	private String courseCode;
-	
-///////////////////////////////////////////////////////////////////////////////////
-	
-	// CONSTRUCTORS
-	
-	public CourseStatistics(double mean, double median, String code)
-	{
-		classMean = mean;
-		classMedian = median;
-		courseCode = code;
-	}
-	
-	public CourseStatistics()
-	{
-		classMean = 100;
-		classMedian = 100;
-		courseCode = "XXXXXX-00";
-	}
-	
-///////////////////////////////////////////////////////////////////////////////////
-	
-	// ACCESSORS
-	
-	public double getClassMean()
-	{
-		return classMean;
-	}
-	
-	public double getClassMedian()
-	{
-		return classMedian;
-	}
-	
-	public String getCourseCode()
-	{
-		return courseCode;
-	}
-	
-///////////////////////////////////////////////////////////////////////////////////
-	
-	// MUTATORS
-
-	public void setClassMean(double mean)
-	{
-		classMean = mean;
-	}
-	
-	public void setClassMedian(double median)
-	{
-		classMedian = median;
-	}
-	
-	public void setCourseCode(String code)
-	{
-		courseCode = code;
-	}
-	
-///////////////////////////////////////////////////////////////////////////////////
-	
-	// METHODS
-	
-	public void updateAvg(ArrayList<MyAssessment> list)
-	{
-	// not sure what this does
-		classMean =  calcMean(list);
-	}
-	
-	public double calcMean(ArrayList<MyAssessment> list)
-	{
-		double total = 0;
-		double num;
-		double den;
-		for(int i = 0 ; i < list.size() ; i++)
-		{
-			num = list.get(i).getAssessmentNum();
-			den = list.get(i).getAssessmentDen();
-			total += (num / den) * 100;
-		}
-		return total / list.size();
-	}
-	
-	public double calcMedian(ArrayList<MyAssessment> list)
-	{
-		double median;
-		int half = list.size() / 2 + 1;
-		
-		if(list.size() % 2 != 0)
-		{
-			MyAssessment assess1 = list.get(half);
-			MyAssessment assess2 = list.get(half-1);
-			double assess1Avg = (assess1.getAssessmentNum() / assess1.getAssessmentDen()) * 100;
-			double assess2Avg = (assess2.getAssessmentNum() / assess2.getAssessmentDen()) * 100;
-			median = (assess1Avg + assess2Avg) / 2;
-		}else
-		{
-			median = (list.get(half).getAssessmentNum() / list.get(half).getAssessmentDen()) * 100;
-		}
-		return median;
-	}
-	
-	public String toString()
-	{
-		return "Course Code: " + courseCode + "Class Mean: " + classMean + "\nClass Median: " + classMedian;
-	}
+public class CourseStatistics {
+   private double classMean;
+   private double classMedian;
+   private Course thisCourse;
+   
+   // accessors
+   public double getClassMean () {
+      return classMean;
+   }
+   public double getClassMedian () {
+      return classMedian;
+   }
+   public Course getThisCourse () {
+      return thisCourse;
+   }
+   
+   // mutators
+   public void setClassMean (double classMean) {
+      this.classMean = classMean;
+   }
+   public void setClassMedian (double classMedian) {
+      this.classMedian = classMedian;
+   }
+   public void setThisCourse (Course thisCourse) {
+      this.thisCourse = thisCourse;
+   }
+   
+   // methods
+   public void updateAvg() {
+      classMean = calcMean();
+      classMedian = calcMedian();
+   }
+   private double calcMean () {
+      ArrayList<MyCourse> classList = thisCourse.getStudentInCourseList();
+      int numStudent = thisCourse.getNumStudent();
+      double sum = 0;
+      for (int i = 0; i < numStudent; i++) {
+         sum += classList.get(i).getWeightedAverage();
+      }
+      return sum/numStudent;
+   }
+   private double calcMedian () {
+      ArrayList<MyCourse> classList = thisCourse.getStudentInCourseList();
+      int numStudent = thisCourse.getNumStudent();
+      if (numStudent % 2 == 0) {
+         return ((classList.get(numStudent/2)).getWeightedAverage() +
+         (classList.get(numStudent/2 + 1)).getWeightedAverage()) / 2;
+      } else {
+         return (classList.get(numStudent/2 + 1)).getWeightedAverage();
+      }
+   }
+   public String toString () {
+      return "";
+   }
 }

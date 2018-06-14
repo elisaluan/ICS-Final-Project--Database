@@ -1,64 +1,28 @@
-public class MyCourse {
-	
-	// FIELDS
-	
-   private Student student;
-   private String courseCode;
-   private String courseName;
-   private static final int PASS_BOUND = 50;
-   private double currentAverage;
-   private int weightDen;
-   private double weightedAverage;
-   
-///////////////////////////////////////////////////////////////////////////////////
-   
-   // CONSTRUCTORS
-   
-   public MyCourse(Student student, String code, String name, double avg, int weight, double weightedAvg)
-   {
-	   this.student = student;
-	   courseCode = code;
-	   courseName = name;
-	   currentAverage = avg;
-	   weightDen = weight;
-	   weightedAverage = weightedAvg;
-   }
-   
-///////////////////////////////////////////////////////////////////////////////////
-   
-   // ACCESSORS
-   
-   public Student getStudent () {
-      return student;
-   }
-   public String getCourseCode () {
-      return courseCode;
-   }
-   public String getCourseName () {
-      return courseName;
-   }
-   public double getCurrentAverage () {
-      return currentAverage;
-   }
-   public double getWeightDen () {
-      return weightDen;
-   }
-   public double getWeightedAverage() {
-      return weightedAverage;
-   }
-   
-///////////////////////////////////////////////////////////////////////////////////
+/*
+* MyCourse.java
+*  
+*
+*
+*/
 
-   // MUTATORS
-   
+import java.util.*;
+
+public class MyCourse {
+   private Student student;
+   private CourseStatistics currentCourseStats;
+   private static int PASS_BOUND = 50;
+   private int weightDen;
+   private double weightedAverage = 0;
+   private int numAssessment = 0;
+   private boolean passingCourse = false;
+   private ArrayList <MyAssessment> marksList = new ArrayList <MyAssessment> (); 
+
+   // mutators
    public void setStudent (Student student) {
       this.student = student;
    }
-   public void setCourseCode (String courseCode) {
-      this.courseCode = courseCode;
-   }
-   public void setCourseName (String courseName) {
-      this.courseName = courseName;
+   public void setCurrentCourseStats (CourseStatistics currentCourseStats) {
+      this.currentCourseStats = currentCourseStats;
    }
    public void setWeightDen (int weightDen) {
       this.weightDen = weightDen;
@@ -66,26 +30,101 @@ public class MyCourse {
    public void setWeightedAverage (double weightedAverage) {
       this.weightedAverage = weightedAverage;
    }
-   
-///////////////////////////////////////////////////////////////////////////////////
-   
-   // METHODS
-   
-   public void calcWeightAverage () {
+   public void setMarksList (ArrayList<MyAssessment> marksList) {
+      this.marksList = marksList;
    }
-   public boolean updateAssessments () {
+   
+   // accessors
+   public Student getStudent () {
+      return student;
    }
+   public CourseStatistics getCurrentCourseStats () {
+      return currentCourseStats;
+   }
+   public double getWeightDen () {
+      return weightDen;
+   }
+   public double getWeightedAverage() {
+      return weightedAverage;
+   }
+   public ArrayList<MyAssessment> getMarksList () {
+      return marksList;
+   }
+   
+   // methods
+   public void calcWeightedAverage () {
+      int weightSum = 0;
+      for (int i = 0; i < numAssessment; i++) {
+         weightSum  += marksList.get(i).getAssessmentWeight(); /////////////////////////
+      }
+      for (int j = 0; j < numAssessment; j++) {
+         weightedAverage += marksList.get(j).getAssessmentMark() *  /////////////////
+                            (marksList.get(j).getAssessmentWeight() *///////////////////
+                            1.0 / weightSum);
+      }
+   }
+   
+   
    public boolean passCourse () {
+      calcWeightedAverage();
+      
+      if (weightedAverage >= PASS_BOUND) {
+         passingCourse = true;
+      } else {
+         passingCourse = false;
+      }
+      
+      return passingCourse;
    }
+   
    public double devFromAvg () {
+      return weightedAverage - currentCourseStats.getClassMedian();
    }
-   public double standDev () {
+   
+   private double standDev () {
+      double squareSumDev = 0;
+      double standardDeviation;
+      for (int i = 0; i < numAssessment; i++) {
+         squareSumDev += Math.pow(((marksList.get(i)).getAssessmentMark() -
+                          weightedAverage),2);
+      }
+      standardDeviation = Math.sqrt(squareSumDev / (numAssessment - 1));
+      return standardDeviation;
    }
-   public int compareAverageToStudentInCourse() {
+   
+   public int compareAverageToStudentInCourse(MyCourse other) {
+      double otherWeightedAvg; 
+      other.calcWeightedAverage();
+      otherWeightedAvg = other.getWeightedAverage();
+      
+      if (currentCourseStats == other.getCurrentCourseStats()) {
+         if (this.weightedAverage > otherWeightedAvg) {
+            return 1;
+         } else if (this.weightedAverage == otherWeightedAvg) {
+            return 0;
+         } else {
+            return -1;
+         }
+      } else {
+         System.out.println("Incomparable Data: Students taking different courses");
+         return 2;
+      }
    }
+   
    public int compareToAverage() {
+      double classMedian = currentCourseStats.getClassMedian(); 
+      
+      if (weightedAverage > classMedian) {
+         return 1;
+      } else if (weightedAverage == classMedian) {
+         return 0;
+      } else {
+         return -1;
+      }
    }
+   
    public String toString () {
+      return "";
    }
    
 }

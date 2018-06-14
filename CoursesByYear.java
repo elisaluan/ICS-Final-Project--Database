@@ -1,33 +1,20 @@
+import java.util.*;
 public class CoursesByYear {
-	
-	// FIELDS
-	
-	private final int NUMSEMESTERS = 2;
-	private CoursesBySemester[] semesterList = new CoursesBySemester[NUMSEMESTERS];
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// CONSTRUCTORS
-	
-	public CoursesByYear(CoursesBySemester[] courses)
-	{
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
-		{
-			semesterList[i] = courses[i];
-		}
-	}
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// METHODS
-	
-	public String toString()
-	{
-		String output = "";
-		for(int i = 0 ; i < NUMSEMESTERS ; i++)
-		{
-			output += semesterList[i];
-		}
-		return output;
-	}
+   private final int NUM_SEMESTERS = 2;
+   private CoursesBySemester[] semesterList = new CoursesBySemester[NUM_SEMESTERS];
+   // constructor
+   // accessor
+   public CoursesBySemester [] getSemesterList () {
+      return semesterList;
+   }
+   
+   // mutator
+   public void setSemesterList (CoursesBySemester[] semesterList) {
+      this.semesterList = semesterList;
+   }
+   
+   // method
+   public String toString () {
+      return "";
+   }
 }

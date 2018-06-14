@@ -1,51 +1,17 @@
-import java.util.ArrayList;
+import java.util.*;
 
-public class Teacher extends User {
-	
-	// FIELDS
-	
-    private static final int NUMCOURSES = 3;
-    private String [] coursesTeaching = new String [NUMCOURSES];
-    private ArrayList <Course> courseArrayList = new ArrayList <Course> ();
-    private Date beginTeaching;
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // CONSTRUCTORS
-    
-    public Teacher()
-    {
-    	
-    }
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // ACCESSORS
-
-    public ArrayList<Course> getCourseArrayList() {
-        return courseArrayList;
-    }
-
-    public static int getNUMCOURSES() {
-        return NUMCOURSES;
-    }
-
-    public String[] getCoursesTeaching() {
-        return coursesTeaching;
-    }
-
-    public Date getBeginTeaching() {
-        return beginTeaching;
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // MUTATORS
-    
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    // METHODS
-    
-    
-
+public class Teacher {
+   private final int MAX_COURSES = 3;
+   private int numTeaching;
+   private ArrayList<String> coursesTeaching = new ArrayList<String> ();
+   private Date beginTeach;
+   // accessors
+   public int getNumTeaching () {
+      return numTeaching;
+   } 
+   public Arraylist<String> getCoursesTeaching () {
+      return coursesTeaching;
+   }
+   public Date getBeginTeac
+   // mutators
 }
