@@ -867,6 +867,530 @@ public class Display {
         logOut();
     }
 
+    public void guidanceOutput() 
+    {   
+        boolean logOut = false;
+        String choice;
+        String firstName;
+        String lastName;
+        String firstName;
+        String lastName;
+        String courseCode;
+        String ID;
+        boolean stop = false;
+        boolean invalidInput = false;
+        int gradeInput;
+        Teacher selectedT;
+        Student selectedS
+        
+        while (!logout)
+        {
+            try
+            {
+                do
+                {
+                    System.out.println("A) Modify a teacher's courses.");
+                    System.out.println("B) Sort students.");
+                    System.out.println("C) Modify/View students.");
+                    System.out.println("Input logout at any point to log out.");
+                
+                    choice = input.nextLine();
+                    
+                    if (choice.equalsIgnoreCase("A"))
+                    {
+                        invalidInput = false;
+                        do
+                        {
+                            System.out.println("Would you like to search by the teacher's ID or their first and last name? (Input ID/name)");
+                            choice = input.nextLine();
+
+                            if (choice.equalsIgnoreCase("ID"))
+                            {
+                                invalidInput = false;
+                                System.out.println("Input the teacher's ID: ");
+                                ID = input.nextLine();
+                                selectedT = searchForTeacherID(ID);
+                                
+                            }
+
+                            else if (choice.equalsIgnoreCase("name"))
+                            {
+                                invalidInput = false;
+                                System.out.println("Input the teacher's first name: ");
+                                firstName = input.nextLine();
+                                System.out.println("Input the teacher's last name: ");
+                                lastName = input.nextLine();
+                                if (searchForTeacher(firstName,lastName).size() == 1)
+                                    {
+                                        invalidInput = false;
+                                        selectedT = searchForTeacher(firstName, lastName);
+                                    }
+                                    else searchForTeacher(firstName,lastName).size() > 1)
+                                    {
+                                        invalidInput = false;
+                                        System.out.println("There are multiple teachers with this name, please input the teachers ID: ")
+                                        ID = input.nextInt();
+                                        selectedS = searchForTeacherID(ID);
+                                    }
+                                    else if (choice.equalsIgnoreCase("logout"));
+                                    {
+                                        invalidInput = false;
+                                        logout = true;
+                                    }
+                                    else   
+                                    {
+                                        System.out.println("There are no matches for this name, please try again.");
+                                        invalidInput = true;
+                                    }
+                            }
+
+                            else if (choice.equalsIgnoreCase("logout"));
+                            {
+                                invalidInput = false;
+                                logout = true;
+                            }
+                            else
+                            {
+                                System.out.println("Invalid input. Please try again.");
+                                invalidInput = true;
+                            }
+                        } while (invalidInput);
+                        
+                        do
+                        {
+                            System.out.println("Would you like to add a course to this teacher, or remove a course from this teacher? (input add/remove)");
+                            choice = input.nextLine();
+
+                            if (choice.equalsIgnoreCase("add"))
+                            {
+                                invalidInput = false;
+                                System.out.println("Enter the course code that you would like to add: ");
+                                courseCode = input.nextLine();
+                                if(GuidanceCounsellor.addCourseToTeacher(selectedT, courseCode))
+                                    System.out.println("The course has been added.");
+                                else
+                                    System.out.println("Error. The course has not been added.");
+                            }
+
+                            else if (choice.equalsIgnoreCase("remove"))
+                            {
+                                invalidInput = false;
+                                System.out.println("Enter the course code that you would like to remove: ");      
+                                courseCode = input.nextLine();
+                                if(GuidanceCounsellor.removeCourseFromTeacher(selectedT, courseCode))
+                                    System.out.println("The course has been removed.");
+                                else
+                                    System.out.println("Error. The course has not been removed.");
+                            }
+
+                            else if (choice.equalsIgnoreCase("logout"));
+                            {
+                                invalidInput = false;
+                                logout = true;
+                            }
+                            else
+                            {
+                                System.out.println("Invalid input. Please try again.");
+                                invalidInput = true;
+                            }
+                        } while (invalidInput);
+                    }
+                    
+                    else if (choice.equalsIgnoreCase("B"))
+                    {
+                        do
+                        {
+                            System.out.println("A) Sort alphabetically.")
+                            System.out.println("B) Sort by mark.")
+                            choice = input.nextLine();
+
+                            if (choice.equalsIgnoreCase("A"))
+                            {
+                                invalidInput = false;
+                                listOfStudents.sortStudentLastAZ();
+                                System.out.println("The list of students has been sorted alphabetically by their last names.");
+                            }
+
+                            else if (choice.equalsIgnoreCase("B"))
+                            { 
+                                invalidInput = false;
+                                do
+                                {
+                                    System.out.println("A) Sort by marks high to low.\nB) Sort by marks low to high.");
+                                    choice = input.nextLine();
+
+                                    if (choice.equalsIgnoreCase("A"))
+                                    {
+                                        invalidInput = false;
+                                        listOfStudents.sortStudentHL();
+                                        System.out.println("The list of students has been sorted by their marks from high to low.");
+                                    }
+
+                                    else if (choice.equalsIgnoreCase("B"))
+                                    {
+                                        invalidInput = false;
+                                        listOfStudents.sortStudentLH();
+                                        System.out.println("The list of students has been sorted by their marks from low to high.");
+                                    }
+                                    else if (choice.equalsIgnoreCase("logout"));
+                                    {
+                                        invalidInput = false;
+                                        logout = true;
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Invalid input. Please try again.");
+                                        invalidInput = true;
+                                    }
+                                } while (invalidInput);
+                            }
+                            else if (choice.equalsIgnoreCase("logout"));
+                            {
+                                logout = true;
+                            }
+                            else
+                            {
+                                System.out.println("Invalid input. Please try again.");
+                                invalidInput = true;
+                            }
+                        } while (invalidInput);
+                    } 
+                
+                    else if (choice.equalsIgnoreCase("C"))
+                    {
+                        invalidInput = false;
+                    
+                            System.out.println("A) Add new student.\nB) Modify an existing student.");                         
+                            choice = input.nextLine();
+                            if (choice.equalsIgnoreCase("A"))
+                            {
+                                System.out.println("Input the student's first name: ")
+                                firstName = input.nextLine();
+                                System.out.println("Input the student's last name: ")
+                                lastName = input.nextLine();
+                                ID = AcademicDatabase.StudentIDGenerator();
+                                ///////////////////// FINISH THIS LATER
+                            }
+                            do
+                            {
+                                System.out.println("To view a student, you can search by ID or name: (Input ID/name)");
+                                choice = input.nextInt();
+
+                                if (choice.equalsIgnoreCase("ID"))
+                                {
+                                    invalidInput = false;
+                                    System.out.println("Input the student's ID: ");
+                                    ID = input.nextInt();
+                                    selectedS = searchForStudentID(ID);
+                                }
+
+                                else if (choice.equalsIgnoreCase("name"))
+                                {         
+                                    invalidInput = false;
+                                    do
+                                    {
+                                        System.out.println("Input the student's first name: ");
+                                        firstName = input.nextLine();
+                                        System.out.println("Input the student's last name: ");
+                                        lastName = input.nextLine();
+                                        if (searchForStudent(firstName,lastName).size() == 1)
+                                        {
+                                            invalidInput = false;
+                                            selectedS = searchForStudent(firstName, lastName);
+                                        }
+                                        else searchForStudent(firstName,lastName).size() > 1)
+                                        {
+                                            invalidInput = false;
+                                            System.out.println("There are multiple students with this name, please input the student's ID: ")
+                                            ID = input.nextInt();
+                                            selectedS = searchForStudentID(ID);
+                                        }
+                                        else if (choice.equalsIgnoreCase("logout"));
+                                        {
+                                            invalidInput = false;
+                                            logout = true;
+                                        }
+                                        else   
+                                        {
+                                            System.out.println("There are no matches for this name, please try again.");
+                                            invalidInput = true;
+                                        }
+                                    } while (invalidInput);
+                                }
+                                else if (choice.equalsIgnoreCase("logout"));
+                                {
+                                    invalidInput = false;
+                                    logout = true;
+                                }
+                                else
+                                {
+                                    System.out.println("Invalid input. Please try again.");
+                                    invalidInput = true;
+                                }
+                            } while (invalidInput);
+
+                            do
+                            {
+                                System.out.println("A) View transcript.\nB) Edit student information.");
+                                choice = input.nextLine();
+
+                                if (choice.equalsIgnoreCase("A"))
+                                {
+                                    invalidInput = false;
+                                    selectedS.viewTranscript();
+                                }
+
+                                else if (choice.equalsIgnoreCase("B"))
+                                {
+                                    invalidInput = false;
+                                    do
+                                    {
+                                        System.out.println("Would you like to modify this student's courses? (Y/N)");
+                                        choice = input.nextLine();
+                                        if (choice.equalsIgnoreCase("Y"))
+                                        {
+                                            invalidInput = false;
+                                            do
+                                            {
+                                                System.out.print("Would you like to add or remove a course (input add/remove");
+                                                choice = input.nextLine();
+                                                if (choice.equalsIgnoreCase("add"))
+                                                {
+                                                    invalidInput = false;
+                                                    System.out.println("Input course code for the course you would like to add: ");
+                                                    courseCode = input.nextLine();
+                                                    if(GuidanceCounsellor.addCourseToStudent(selectedS, courseCode))
+                                                        System.out.println("The course has been added.");
+                                                    else
+                                                        System.out.println("Error. The course has not been added.");
+                                                }
+                                                else if (choice.equalsIgnoreCase("remove"));
+                                                {
+                                                    invalidInput = false;
+                                                    System.out.println("Input course code for the course you would like to remove: ");
+                                                    courseCode = input.nextLine();
+                                                    if(GuidanceCounsellor.removeCourseFromStudent(selectedS, courseCode))
+                                                        System.out.println("The course has been removed.");
+                                                    else
+                                                        System.out.println("Error. The course has not been removed.");
+                                                }
+                                                else if (choice.equalsIgnoreCase("logout"));
+                                                {
+                                                    invalidInput = false;
+                                                    logout = true;
+                                                }
+                                                else
+                                                {
+                                                    System.out.println("Invalid input. Please try again.");
+                                                    invalidInput = true;
+                                                }
+                                            } while (invalidInput);
+                                        }
+                                        else if (choice.equalsIgnoreCase("N"));
+                                        {
+                                            invalidInput = false;
+                                        }
+                                        else if (choice.equalsIgnoreCase("logout"));
+                                        {
+                                            invalidInput = false;
+                                            logout = true;
+                                        }
+                                        else
+                                        {
+                                            System.out.println("Invalid input. Please try again.");
+                                            invalidInput = true;
+                                        }    
+                                    } while (invalidInput);
+                                    if (schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).getEsl)
+                                    {
+                                        invalidInput = false;
+                                        do
+                                        {
+                                            System.out.println("This student is currently ESL. Change to not ESL? (Y/N)");
+                                            choice = input.nextLine();
+                                            if (choice.equalsIgnoreInput("Y"))
+                                            {
+                                                invalidInput = false;
+                                                schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setEsl(false);
+                                            }
+                                            else if (choice.equalsIgnoreInput("N"))
+                                            {
+                                                invalidInput = false;
+                                            }
+                                            else if (choice.equalsIgnoreCase("logout"));
+                                            {
+                                                invalidInput = false;
+                                                logout = true;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Invalid input. Please try again.");
+                                                invalidInput = true;
+                                            } 
+                                        } while (invalidInput);
+                                    }
+                                    else
+                                    {
+                                        do
+                                        {
+                                            System.out.println("This student is currently not ESL. Change to ESL? (Y/N)");
+                                            if (choice.equalsIgnoreInput("Y"))
+                                            {
+                                                invalidInput = false;
+                                                schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setEsl(true);
+                                            }   
+                                            else if (choice.equalsIgnoreInput("N"))
+                                            {
+                                                invalidInput = false;
+                                            }
+                                            else if (choice.equalsIgnoreCase("logout"));
+                                            {
+                                                invalidInput = false;
+                                                logout = true;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Invalid input. Please try again.");
+                                                invalidInput = true;
+                                            }  
+                                        } while (invalidInput);
+                                    }
+                                    if (schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).getInternationalStudent)
+                                    {
+                                        invalidInput = false;
+                                        do
+                                        {
+                                            System.out.println("This student is currently an international student. Remove international student status?? (Y/N)");
+                                            choice = input.nextLine();
+                                            if (choice.equalsIgnoreInput("Y"))
+                                            {
+                                                invalidInput = false;
+                                                schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setInternationalStudent(false);
+                                            }
+                                            if (choice.equalsIgnoreInput("N"))
+                                            {
+                                                invalidInput = false;
+                                            }
+                                            else if (choice.equalsIgnoreCase("logout"));
+                                            {
+                                                invalidInput = false;
+                                                logout = true;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Invalid input. Please try again.");
+                                                invalidInput = true;
+                                            }  
+                                        } while (invalidInput);
+                                    }
+                                    else
+                                    {
+                                        invalidInput = false;
+                                        System.out.println("This student is currently not an international student. Add international student status? (Y/N)");
+                                        do
+                                            {
+                                            if (choice.equalsIgnoreInput("Y"))
+                                            {
+                                                invalidInput = false;
+                                                schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setInternationalStudent(true);
+                                            }     
+                                            else if (choice.equalsIgnoreInput("N"))
+                                            {
+                                                invalidInput = false;
+                                            }
+                                            else if (choice.equalsIgnoreCase("logout"));
+                                            {
+                                                invalidInput = false;
+                                                logout = true;
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Invalid input. Please try again.");
+                                                invalidInput = true;
+                                            }  
+                                        } while (invalidInput);
+                                    }
+                                    do
+                                    {
+                                        System.out.println("Would you like to change this student's grade? (Y/N)");
+                                        choice = input.nextLine();
+                                        if (choice.equalsIgnoreCase("Y"))
+                                        {
+                                            invalidInput = false;
+                                            System.out.println("Input the grade you want to put this student in: ")
+                                            gradeInput = input.nextInt();
+                                            schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setGrade(gradeInput);
+                                        }
+                                        else if (choice.equalsIgnoreCase("N"))
+                                        {
+                                            invalidInput = false;
+                                        }
+                                        else if (choice.equalsIgnoreCase("logout"));
+                                        {
+                                            invalidInput = false;
+                                            logout = true;
+                                        }
+                                        else
+                                        {
+                                            System.out.println("Invalid input. Please try again.");
+                                            invalidInput = true;
+                                        }  
+                                    } while (invalidInput);
+
+                                    do
+                                    {
+                                        System.out.println("Would you like to change this student's name? (Y/N)");
+                                        choice = input.nextLine();
+                                        if (choice.equalsIgnoreCase("Y"))
+                                        {
+                                            invalidInput = false;
+                                            System.out.println("Input the student's first name: ")
+                                            firstName2 = input.nextLine()
+                                            schoolArrayList.get(schoolIndex).searchForStudent(firstName,lastName).setFirstName(firstName2);
+                                            System.out.println("Input the student's last name: ")
+                                            lastName2 = input.nextLine()
+                                            schoolArrayList.get(schoolIndex).searchForStudent(firstName2,lastName).setLastName(lastName2);
+                                        }
+                                        else if (choice.equalsIgnoreCase("N"))
+                                        {
+                                            invalidInput = false;
+                                        }
+                                        else if (choice.equalsIgnoreCase("logout"));
+                                        {
+                                            invalidInput = false;
+                                            logout = true;
+                                        }
+                                        else
+                                        {
+                                            System.out.println("Invalid input. Please try again.");
+                                            invalidInput = true;
+                                        }  
+                                    } while invalidInput();
+                                else if (choice.equalsIgnoreCase("logout"));
+                                {
+                                    logout = true;
+                                }
+                                else
+                                {
+                                    System.out.println("Invalid input. Please try again.");
+                                    invalidInput = true;
+                                }
+                            }  while (invalidInput);
+                            else if (choice.equalsIgnoreCase("logout"));
+                            {
+                                invalidInput = false;
+                                logout = true;
+                            }
+                            else
+                            {
+                                System.out.println("Invalid input. Please try again.");
+                                invalidInput = true;
+                            }
+                    }                                         
+                } while (invalidInput);
+            }
+        }
+    }
     public void logOut() {
         userID = "";
         password = "";
