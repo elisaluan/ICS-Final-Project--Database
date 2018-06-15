@@ -26,8 +26,10 @@ public class Principal extends User {
             if (teacherID.equalsIgnoreCase(schoolList.listOfTeachers.get(i).getUserID()))
             {
                 schoolList.listOfTeachers.remove(i);
+                return true;
             }
         }
+        return false;
     }
 
     public String toString ()
