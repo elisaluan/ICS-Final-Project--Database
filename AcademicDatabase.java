@@ -7,6 +7,8 @@ public class AcademicDatabase {
     private final String SCHOOL_PREFIX = "SCH";
     private final String PRINCIPAL_PREFIX = "PRI";
     private static ArrayList <School> tdsbSchoolList= new ArrayList <School> ();
+    private static Admin admin = new Admin();
+
 
     private int numDigit = 6;
 
@@ -21,6 +23,10 @@ public class AcademicDatabase {
 
     public String getSCHOOL_PREFIX() {
         return SCHOOL_PREFIX;
+    }
+
+    public static Admin getAdmin() {
+        return admin;
     }
 
     public String getPRINCIPAL_PREFIX() {
