@@ -9,7 +9,7 @@ public class CoursesBySemester {
    }
    
    // mutator
-   public void setCourseList (ArrayList<MyCourse> courseList) {
+   public void setCourseList (ArrayList<MyCourse> CourseList) {
       this.courseList = courseList;
    }
    
@@ -21,7 +21,7 @@ public class CoursesBySemester {
 
       for (int i = 0; i < courseList.size(); i  ++)
       {
-         totalSum += courseList.get(i).getWeightedAverage();
+         totalSum = totalSum = courseList.get(i).getWeightedAverage();
       }
       average = totalSum/ courseList.size();
 
