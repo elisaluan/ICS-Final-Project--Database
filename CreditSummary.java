@@ -33,17 +33,15 @@ public class CreditSummary {
   
   // METHODS
   
-  public String toString()
-  {
-	String output = "";
-	int length = yearList.size();
-	
-	for(int i = 0 ; i < length ; i++)
-	{
-		output += yearList.get(i).toString();
-	}
-	return output;
-  }
+  public String toString ()
+   {
+      String output = "";
+      for (int i = 0; i < yearList.size(); i ++)
+      {
+         output = "Year #" + i + ":\n" + output + yearList.get(i) + "\n//////////////////////\n";
+      }
+   return output;
+   }
 
    public MyCourse searhByCourse (String course)
    {
