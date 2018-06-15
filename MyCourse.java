@@ -129,7 +129,15 @@ public class MyCourse {
    }
    
    public String toString () {
-      return "";
+
+      String output = "Course Code: " + courseCode + "\nAverage: " + weightedAverage + "\nPassing Couse: " + passingCourse
+              + "\n Assessments: \n";
+      for (int i = 0; i < marksList.size(); i ++)
+      {
+         output = output + marksList.get(i) + "\n/////////////////////////////\n";
+      }
+
+      return output;
    }
    
 }
