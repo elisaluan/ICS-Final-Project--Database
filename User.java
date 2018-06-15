@@ -55,6 +55,7 @@ abstract class User {
       return (lastName.substring(NUM_START).compareToIgnoreCase(other.getLastName().substring(NUM_START)));
    }
    public String toString () {
-      return "";
+      String output = "Name: " + firstName + " " + lastName + "\nUser ID: " + userID + "\nBirth Date: " + birthDate ;
+      return output;
    }
 }
