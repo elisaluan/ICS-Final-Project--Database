@@ -1,22 +1,22 @@
 /*
-* MyCourse.java
-*  
-*
-*
-*/
+ * MyCourse.java
+ *
+ *
+ *
+ */
 
 import java.util.*;
 
 public class MyCourse {
-   private String courseCode;
    private Student student;
+   private String courseCode;
    private CourseStatistics currentCourseStats;
    private static int PASS_BOUND = 50;
    private int weightDen;
    private double weightedAverage = 0;
    private int numAssessment = 0;
    private boolean passingCourse = false;
-   private ArrayList <MyAssessment> marksList = new ArrayList <MyAssessment> (); 
+   private ArrayList <MyAssessment> marksList = new ArrayList <MyAssessment> ();
 
    // mutators
    public void setStudent (Student student) {
@@ -34,7 +34,7 @@ public class MyCourse {
    public void setMarksList (ArrayList<MyAssessment> marksList) {
       this.marksList = marksList;
    }
-   
+
    // accessors
    public Student getStudent () {
       return student;
@@ -51,11 +51,11 @@ public class MyCourse {
    public ArrayList<MyAssessment> getMarksList () {
       return marksList;
    }
-   public String getCourseCode ()
-   {
+
+   public String getCourseCode() {
       return courseCode;
    }
-   
+
    // methods
    public void calcWeightedAverage () {
       int weightSum = 0;
@@ -64,44 +64,44 @@ public class MyCourse {
       }
       for (int j = 0; j < numAssessment; j++) {
          weightedAverage += marksList.get(j).getAssessmentMark() *  /////////////////
-                            (marksList.get(j).getAssessmentWeight() *///////////////////
-                            1.0 / weightSum);
+                 (marksList.get(j).getAssessmentWeight() *///////////////////
+                         1.0 / weightSum);
       }
    }
-   
-   
+
+
    public boolean passCourse () {
       calcWeightedAverage();
-      
+
       if (weightedAverage >= PASS_BOUND) {
          passingCourse = true;
       } else {
          passingCourse = false;
       }
-      
+
       return passingCourse;
    }
-   
+
    public double devFromAvg () {
       return weightedAverage - currentCourseStats.getClassMedian();
    }
-   
+
    private double standDev () {
       double squareSumDev = 0;
       double standardDeviation;
       for (int i = 0; i < numAssessment; i++) {
          squareSumDev += Math.pow(((marksList.get(i)).getAssessmentMark() -
-                          weightedAverage),2);
+                 weightedAverage),2);
       }
       standardDeviation = Math.sqrt(squareSumDev / (numAssessment - 1));
       return standardDeviation;
    }
-   
+
    public int compareAverageToStudentInCourse(MyCourse other) {
-      double otherWeightedAvg; 
+      double otherWeightedAvg;
       other.calcWeightedAverage();
       otherWeightedAvg = other.getWeightedAverage();
-      
+
       if (currentCourseStats == other.getCurrentCourseStats()) {
          if (this.weightedAverage > otherWeightedAvg) {
             return 1;
@@ -115,10 +115,10 @@ public class MyCourse {
          return 2;
       }
    }
-   
+
    public int compareToAverage() {
-      double classMedian = currentCourseStats.getClassMedian(); 
-      
+      double classMedian = currentCourseStats.getClassMedian();
+
       if (weightedAverage > classMedian) {
          return 1;
       } else if (weightedAverage == classMedian) {
@@ -127,7 +127,18 @@ public class MyCourse {
          return -1;
       }
    }
-   
+
+   public MyAssessment searchMyAssessmentForStudent(String searchAssessment) {
+      int index = -1;
+      for (int i = 0; i < numAssessment; i++) {
+         if (marksList.get(i).getAssessmentName().equalsIgnoreCase(searchAssessment)) {
+            index = i;
+            return marksList.get(i);
+         }
+      }
+      return null;
+   }
+
    public String toString () {
 
       String output = "Course Code: " + courseCode + "\nAverage: " + weightedAverage + "\nPassing Couse: " + passingCourse
@@ -139,5 +150,5 @@ public class MyCourse {
 
       return output;
    }
-   
+
 }
