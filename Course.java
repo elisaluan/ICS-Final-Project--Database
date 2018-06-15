@@ -5,9 +5,10 @@ public class Course {
    private String courseCode;
    private CourseStatistics average;
    private int numStudent;
+   private Assessment allAssess;
    private ArrayList<MyCourse> studentInCourseList = new ArrayList <MyCourse> ();
    boolean complete;
-   
+
    // accessors
    public Teacher getTeacher () {
       return teacher;
@@ -21,11 +22,14 @@ public class Course {
    public int getNumStudent () {
       return numStudent;
    }
-   
+   public Assessment getAllAssess () {
+      return allAssess;
+   }
+
    public ArrayList<MyCourse> getStudentInCourseList () {
       return studentInCourseList;
    }
-   
+
    // mutator
    public void setTeacher (Teacher teacher) {
       this.teacher = teacher;
@@ -39,17 +43,20 @@ public class Course {
    public void setNumStudent (int numStudent) {
       this.numStudent = numStudent;
    }
-   
    public void setStudentInCourseList (ArrayList<MyCourse> studentInCourseList) {
       this.studentInCourseList = studentInCourseList;
    }
-   
+   public void setAllAssess (Assessment allAssess) {
+      this.allAssess = allAssess;
+   }
+
    // methods
    public void newAssessment () {
    }
-   
+
    public void sortLastNameAZ() {
       int count;
+      String temp;
       for (int i = 1; i < numStudent; i++) {
          count = i;
          while (count > 0 && studentInCourseList.get(count).getStudent().compareToLastName(studentInCourseList.get(count-1).getStudent()) < 0) {
@@ -58,9 +65,10 @@ public class Course {
          }
       }
    }
-   
+
    public void sortFirstNameAZ() {
       int count;
+      String temp;
       for (int i = 1; i < numStudent; i++) {
          count = i;
          while (count > 0 && studentInCourseList.get(count).getStudent().compareToFirstName(studentInCourseList.get(count-1).getStudent()) < 0) {
@@ -69,11 +77,11 @@ public class Course {
          }
       }
    }
-   
+
    public void sortStudentMarkHL () {
       int lengthList = numStudent;
       int highestIndex = 0;
-      
+
       for (int i = 0; i < lengthList - 1; i++) {
          highestIndex = 0;
          for (int j = 0; j < lengthList - i; j++) {
@@ -83,12 +91,12 @@ public class Course {
          }
          Collections.swap(studentInCourseList, highestIndex, lengthList - (i+1));
       }
-   }  
-   
+   }
+
    public void sortStudentMarkLH () {
       int lengthList = numStudent;
       int highestIndex = 0;
-      
+
       for (int i = 0; i < lengthList - 1; i++) {
          highestIndex = 0;
          for (int j = 0; j < lengthList - i; j++) {
@@ -99,12 +107,12 @@ public class Course {
          Collections.swap(studentInCourseList, highestIndex, lengthList - (i+1));
       }
    }
-   
+
    public void sortStudentByID () {
       int listLength = numStudent;
       boolean sorted = false;
       int comparison;
-      
+
       for (int i = 0; i < listLength && !sorted; i++) {
          sorted = true;
          for (int j = 0; j < listLength - (i+1); j++) {
@@ -121,16 +129,17 @@ public class Course {
          }
       }
    }
+
    public Student searchHighestAvg () {
       int index = 0;
       int listLength = numStudent;
-      
+
       for (int i = 1; i < listLength; i++) {
          if (studentInCourseList.get(i).getWeightedAverage() > studentInCourseList.get(index).getWeightedAverage()) {
             index = i;
          }
       }
-      
+
       return studentInCourseList.get(index).getStudent();
    }
    public Student searchStudentByID (String findUserID) {
@@ -140,7 +149,7 @@ public class Course {
       boolean found = false;
       int middle;
       String middleValue;
-      
+
       while (!found && bottom <= top) {
          middle = (bottom + top)/2;
          middleValue = studentInCourseList.get(middle).getStudent().getUserID();
@@ -153,27 +162,47 @@ public class Course {
             top = middle - 1;
          }
       }
-      
+
       return studentInCourseList.get(index).getStudent();
    }
-   
+
    public Student searchStudentByName (String firstName, String lastName) {
-      int index = 0;
+      int index = -1;
       int listLength = numStudent;
-      
-      for (int i = 1; i < listLength; i++) {
+
+      for (int i = 0; i < listLength; i++) {
          if (studentInCourseList.get(i).getStudent().getLastName().equals(lastName) &&
-            studentInCourseList.get(i).getStudent().getFirstName().equals(firstName)) {
+                 studentInCourseList.get(i).getStudent().getFirstName().equals(firstName)) {
             index = i;
          }
       }
-      
-      return studentInCourseList.get(index).getStudent();
+      if (index != -1) {
+         return studentInCourseList.get(index).getStudent();
+      } else {
+         return null;
+      }
    }
+
+   public MyCourse searchMyCourseForStudent (Student student) {
+      int index = -1;
+      int listLength = numStudent;
+
+      for (int i = 0; i < numStudent; i++) {
+         if (studentInCourseList.get(i).getStudent() == student) {
+            index = i;
+            return studentInCourseList.get(index);
+         }
+      }
+      return studentInCourseList.get(index);
+   }
+
    public void courseComplete () {
       this.complete = true;
    }
+
    public String toString () {
-      return "";
+      String output = "Couse Code: " + courseCode + "\n" + average + "\nStudent Number: " +
+              numStudent + "\nCourse Completed: " + complete;
+      return output;
    }
 }
