@@ -4,7 +4,12 @@ public class CourseStatistics {
    private double classMean;
    private double classMedian;
    private Course thisCourse;
-   
+
+   public CourseStatistics (Course currentCourse)
+   {
+      thisCourse = currentCourse;
+   }
+
    // accessors
    public double getClassMean () {
       return classMean;
@@ -52,6 +57,7 @@ public class CourseStatistics {
       }
    }
    public String toString () {
-      return "";
+      String output = "Course Average: " + classMean + "\nCourse Median: " + classMedian;
+      return output;
    }
 }
