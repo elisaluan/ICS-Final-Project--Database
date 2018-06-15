@@ -49,8 +49,10 @@ public class MyAssessment {
    public void calcMark () {
       assessmentMark = assessmentNum * 1.0 / assessmentDen;
    }
-   public String toString () {
-      return "";
+    public String toString () {
+     String output = "Assessment Name: " + assessmentName + "\nAssessment Percent: " + assessmentMark + "\nAssessment Mark: "
+             + assessmentNum + "\nAssessment Total: " + assessmentDen + "\nAssessment Weight: " + assessmentWeight;
+     return output;
    }
 }
 
