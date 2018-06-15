@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class School {
@@ -13,7 +12,7 @@ public class School {
     Principal principal;
     Date dateEstablished;
     
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // CONSTRUCTORS
     
@@ -28,7 +27,14 @@ public class School {
     	dateEstablished = date;
     }
     
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public School (String name, String ID, Principal principal, Date date) {
+    	schoolName = name;
+    	schoolID = ID;
+    	this.principal = principal;
+    	dateEstablished = date;
+    }
+    
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // ACCESSORS
 
@@ -60,7 +66,7 @@ public class School {
     	return dateEstablished;
     }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // MUTATORS
     
@@ -84,7 +90,7 @@ public class School {
     	dateEstablished = date;
     }
     
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     // METHODS
     
@@ -275,12 +281,43 @@ public class School {
     	}
     }
     
-    // 
-    
-    
+    // sorting for Guidance Counselors using bubble sort
+    public void sortGuidanceAlpha()
+    {
+    	int length = listOfGuidanceCouns.size();
+    	boolean sorted = false;
+    	
+    	for(int i = 0 ; i < length && sorted == false ; i++) //outer loop for the bubble sort
+    	{
+    		sorted = true; //controls if one more  pass SHOULD be made
+    		for(int j = 0 ; j < length - i - 1 ; j++)
+    		{
+    			GuidanceCounsellor guide1 = listOfGuidanceCouns.get(j); // initalizes new variables to avoid  repetitive method calling
+    			GuidanceCounsellor guide2 = listOfGuidanceCouns.get(j+1);
+    			
+    			if(guide1.getLastName().compareTo(guide2.getLastName()) < 0) //compares the teachers last name
+    			{
+    				sorted = false;								//turned false to allow one more pass in the outer loop 
+    				
+    				listOfGuidanceCouns.set(j, guide2);				//swapping students
+    				listOfGuidanceCouns.set(j+1, guide1);			//^^^^
+    			}
+    			else if(guide1.getLastName().compareTo(guide2.getLastName()) == 0)
+    			{
+    				if(guide1.getFirstName().compareTo(guide2.getFirstName()) < 0) // compares the teachers first name if they have the same last name
+    				{
+    					sorted = false;							//turned false to allow one more pass in the outer loop 
+    					
+    					listOfGuidanceCouns.set(j, guide2);			//swapping students
+    					listOfGuidanceCouns.set(j+1, guide1);		//^^^^
+    				}
+    			}
+    		}
+    	}
+    }
 
     
-/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Searching methods begin here
 	//Method to search for student given first name and last name using sequential search. Returns array of matching students
 	public Student[] searchForStudent(String firstName, String lastName)
@@ -333,7 +370,53 @@ public class School {
     	return matches;
 	}
 	
+	//Method to search for Student by their Student ID
+	public Student searchForStudentID(String ID) {
+		
+		int length = listOfStudents.size();
+		
+		for(int i = 0 ; i < length ; i++) { //traverses the whole ArrayList
+			
+			Student stud = listOfStudents.get(i); // to avoid repetitive method calling
+			
+			if(stud.getUserID() == ID) { //if the ID matches, it return that student object
+				return stud;
+			}
+		}
+		return null; // returns nothing if not found;
+	}
 	
+	// Method to search for Teacher by their Teacher ID
+	public Teacher searchForTeacherID(String ID) {
+		
+		int bot = 0;									//make bot 0
+		int top = listOfTeachers.size() - 1;			//make top the last index of the array
+		boolean found = false;							//initializes a boolean to control when to exit the loop when found
+		
+		while(bot <= top  && found == false) {			//loop through the lowerbound index up to the upperbound index
+			int mid  = (bot +  top) / 2;				// sets the mid to be the middle in of the upperbound and lowerbound index
+			
+			if(ID.equals(listOfTeachers.get(mid).getUserID())) {
+				
+				found = true;							//makes found true to enable an exit in the loop
+				return listOfTeachers.get(mid);			//returns the Teacher object if found
+				
+			}else if(listOfTeachers.get(mid).getUserID().compareTo(ID) > 0) {	//if the ID of the current index comes after the searched ID, it cuts everything before the middle index 
+			
+				bot = mid + 1;													//makes the lowerbound index to the index after mid index to cut the segment of the array that needs to be traversed into half
+				
+			}else{																//if the ID of the current index comes before the searched ID, it cuts everything after the middle index
+				
+				top = mid - 1;													//makes the upperbound index to the index before the middle index.
+
+			}
+		}
+		
+		return null;		// returns null if the ID was not found
+		
+	}
     
+	
+	
 }
 
