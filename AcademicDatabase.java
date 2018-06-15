@@ -7,18 +7,28 @@ public class AcademicDatabase {
     private final String SCHOOL_PREFIX = "SCH";
     private final String PRINCIPAL_PREFIX = "PRI";
     private static ArrayList <School> tdsbSchoolList= new ArrayList <School> ();
+    private ArrayList <User> allUsers = new ArrayList<User>();
     private static Admin admin = new Admin();
+    private FileInputOutput fileInputOutput = new FileInputOutput();
 
 
     private int numDigit = 6;
 
-
+    //Accessors
     public String getSTUDENT_PREFIX() {
         return STUDENT_PREFIX;
     }
 
+    public ArrayList<User> getAllUsers() {
+        return allUsers;
+    }
+
     public String getTEACHER_PREFIX() {
         return TEACHER_PREFIX;
+    }
+
+    public FileInputOutput getFileInputOutput() {
+        return fileInputOutput;
     }
 
     public String getSCHOOL_PREFIX() {
@@ -41,6 +51,45 @@ public class AcademicDatabase {
         return numDigit;
     }
 
+    //Mutators
+    public static void setTdsbSchoolList(ArrayList<School> tdsbSchoolList) {
+        AcademicDatabase.tdsbSchoolList = tdsbSchoolList;
+    }
+
+    public void setAllUsers(ArrayList<User> allUsers) {
+        this.allUsers = allUsers;
+    }
+
+    public static void setAdmin(Admin admin) {
+        AcademicDatabase.admin = admin;
+    }
+
+    public void setNumDigit(int numDigit) {
+        this.numDigit = numDigit;
+    }
+
+    //Methods
+    public void makeAllUsers ()
+    {
+        for (int i = 0; i < tdsbSchoolList.size(); i ++)
+        {
+            for (int k = 0; k <tdsbSchoolList.get(i).getListOfStudents().size(); k ++)
+            {
+              allUsers.add(tdsbSchoolList.get(i).getListOfStudents().get(k));
+            }
+            for (int k = 0; k <tdsbSchoolList.get(i).getListOfTeachers().size(); k ++)
+            {
+                allUsers.add(tdsbSchoolList.get(i).getListOfTeachers().get(k));
+            }
+            for (int k = 0; k <tdsbSchoolList.get(i).getListOfGuidanceCouns().size(); k ++)
+            {
+                allUsers.add(tdsbSchoolList.get(i).getListOfGuidanceCouns().get(k));
+            }
+            allUsers.add(tdsbSchoolList.get(i).getPrincipal());
+            allUsers.add(AcademicDatabase.getAdmin());
+        }
+    }
+
     //Class to sort students at every school by their last name in alphabetical order using bubble sort
     public void sortStudentLastAZ(){
         //For loop to loop through every school
@@ -48,21 +97,22 @@ public class AcademicDatabase {
             //variable to check if array is sorted
             boolean sorted = false;
             //Outer for loop for bubble sort
-            for (int i = 0; i < tdsbSchoolList.get(school).listOfStudents.size() && sorted == false; i++){
+            for (int i = 0; i < tdsbSchoolList.get(school).getListOfStudents().size() && sorted == false; i++){
                 sorted = true;
                 //Inner for loop for bubble sort
-                for (int j = 0; j < tdsbSchoolList.get(school).listOfStudents.size() - i - 1; j++){
+                for (int j = 0; j < tdsbSchoolList.get(school).getListOfStudents().size() - i - 1; j++){
                     //Initializes two Students to be sorted
-                    Student stud1 = tdsbSchoolList.get(school).listOfStudents.get(j);
-                    Student stud2 = tdsbSchoolList.get(school).listOfStudents.get(j+1);
+                    Student stud1 = tdsbSchoolList.get(school).getListOfStudents().get(j);
+                    Student stud2 = tdsbSchoolList.get(school).getListOfStudents().get(j+1);
                     //Determines if the first student should be put after the second student
                     if (stud1.getFirstName().charAt(0) > stud2.getFirstName().charAt(0)){
                         //If a sort happens sets indicates that the array is not yet sorted
                         sorted = false;
 
                         //swaps the two students
-                        tdsbSchoolList.get(school).listOfStudents.get(j).set(stud2);
-                        tdsbSchoolList.get(school).listOfStudents.get(j+1).set(stud1);
+                        
+                        Collections.swap(tdsbSchoolList.get(school).getListOfStudents(), j, j + 1 );
+                        
                     }
                 }
             }
@@ -77,24 +127,24 @@ public class AcademicDatabase {
             boolean sorted = false;
 
             //Outer for loop for bubble sort
-            for (int i = 0; i < tdsbSchoolList.get(school).listOfStudents.size() && sorted == false; i++){
+            for (int i = 0; i < tdsbSchoolList.get(school).getListOfStudents().size() && sorted == false; i++){
                 sorted = true;
 
                 //Inner for loop for bubble sort
-                for (int j = 0; j < tdsbSchoolList.get(school).listOfStudents.size() - i - 1; j++){
+                for (int j = 0; j < tdsbSchoolList.get(school).getListOfStudents().size() - i - 1; j++){
                     //Initializes two Students to be sorted
-                    Student stud1 = tdsbSchoolList.get(school).listOfStudents.get(j);
-                    Student stud2 = tdsbSchoolList.get(school).listOfStudents.get(j+1);
+                    Student stud1 = tdsbSchoolList.get(school).getListOfStudents().get(j);
+                    Student stud2 = tdsbSchoolList.get(school).getListOfStudents().get(j+1);
 
                     //Determines if the first student has a lower average than the second student
-                    if (stud1.getTranscript().getYearList.get(stud1.getTranscript().getYearList.size()-1).calcYearAverage()
-                            < stud2.getTranscript().getYearList.get(stud1.getTranscript().getYearList.size()-1).calcYearAverage()) {
+                    if (stud1.getTranscript().getYearList().get(stud1.getTranscript().getYearList().size()-1).calcYearAverage()
+                            < stud2.getTranscript().getYearList().get(stud1.getTranscript().getYearList().size()-1).calcYearAverage()) {
                         //If a sort happens sets indicates that the array is not yet sorted
                         sorted = false;
 
                         //swaps the two students
-                        tdsbSchoolList.get(school).listOfStudents.set(j,stud2);
-                        tdsbSchoolList.get(school).listOfStudents.set(j+1,stud1);
+                        tdsbSchoolList.get(school).getListOfStudents().set(j,stud2);
+                        tdsbSchoolList.get(school).getListOfStudents().set(j+1,stud1);
                     }
                 }
             }
@@ -109,6 +159,7 @@ public class AcademicDatabase {
 
     //Method to take in an ID and check if no other user has this ID
     public boolean checkUnique(String ID){
+        makeAllUsers();
         //loops through all users
         int numUsers = allUsers.size();
         for (int userIndex = 0; userIndex < numUsers; userIndex++) {
