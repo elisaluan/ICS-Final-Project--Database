@@ -9,7 +9,7 @@ public class AcademicDatabase {
     private static ArrayList <School> tdsbSchoolList= new ArrayList <School> ();
     private ArrayList <User> allUsers = new ArrayList<User>();
     private static Admin admin = new Admin();
-    private FileInputOutput fileIO  = new FileInputOutput();
+    private static FileInputOutput fileIO  = new FileInputOutput();
 
 
     private int numDigit = 6;
@@ -27,7 +27,7 @@ public class AcademicDatabase {
         return TEACHER_PREFIX;
     }
 
-    public FileInputOutput getFileIO () {
+    public static FileInputOutput getFileIO () {
         return fileIO ;
     }
 
@@ -55,6 +55,7 @@ public class AcademicDatabase {
     public static void setTdsbSchoolList(ArrayList<School> tdsbSchoolList) {
         AcademicDatabase.tdsbSchoolList = tdsbSchoolList;
     }
+
 
     public void setAllUsers(ArrayList<User> allUsers) {
         this.allUsers = allUsers;
