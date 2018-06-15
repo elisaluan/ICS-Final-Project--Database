@@ -1,56 +1,36 @@
 import java.util.*;
 
-public class Teacher extends User{
+public class Teacher extends User {
    private final int MAX_COURSES = 3;
    private int numTeaching;
-   private String [] coursesTeaching = new String [MAX_COURSES];
-   private ArrayList <Course> courseArrayList = new ArrayList<Course>();
+   private ArrayList<Course> coursesTeaching = new ArrayList<Course> ();
    private Date beginTeach;
 
-   // Accessors
+   // accessors
    public int getNumTeaching () {
       return numTeaching;
    }
-
-   public String[] getCoursesTeaching() {
-
+   public ArrayList<Course> getCoursesTeaching () {
       return coursesTeaching;
    }
-
-   public ArrayList<Course> getCourseArrayList() {
-      return courseArrayList;
-   }
-
-   public int getMAX_COURSES() {
-      return MAX_COURSES;
-   }
-
-   public Date getBeginTeach() {
+   public Date getBeginTeach () {
       return beginTeach;
    }
 
-   //Mutators
-   public void setNumTeaching(int numTeaching) {
+   // mutators
+   public void setNumTeaching (int numTeaching) {
       this.numTeaching = numTeaching;
    }
-
-   public void setCoursesTeaching(String[] coursesTeaching) {
+   public void setCoursesTeaching (ArrayList<Course> coursesTeaching) {
       this.coursesTeaching = coursesTeaching;
    }
-
-   public void setCourseArrayList(ArrayList<Course> courseArrayList) {
-      this.courseArrayList = courseArrayList;
-   }
-
    public void setBeginTeach(Date beginTeach) {
       this.beginTeach = beginTeach;
    }
-
-   //Method
-
-   public boolean updateAverage (Student other, Course course, String assessmentName, int assessmentMark )
+   /*
+      public boolean updateAverage (Student other, Course course, String assessmentName, int assessmentMark )
    {
-         MyCourse temp = other.getTranscript().searhByCourse(course.getCourseCode());
+         MyCourse temp = other.getTranscript().searchByCourse((course.getCourseCode()));
 
          for (int i = 0; i < temp.getMarksList().size(); i ++)
          {
@@ -63,11 +43,61 @@ public class Teacher extends User{
 
          return false;
    }
-
-   public void addAssessment (MyAssessment assessment)
-   {
-      
+   */
+   public void updateOverallAverage (Student forStudent, Course thisCourse, double toAverage) {
+      MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
+      if (editMyCourse != null) {
+         editMyCourse.setWeightedAverage(toAverage);
+      }
    }
-   
+   public void updateAssessmentMark (Student forStudent, Course thisCourse, int markNum, int markDen, String assessmentName) {
+      MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
+      if (editMyCourse!= null) {
+         MyAssessment editMyAssessment = editMyCourse.searchMyAssessmentForStudent(assessmentName);
+         if (editMyAssessment != null) {
+            editMyAssessment.setAssessmentNum(markNum);
+            editMyAssessment.setAssessmentDen(markDen);
+            editMyAssessment.calcMark();
+         }
+      }
+   }
+   public void updateAssessmentWeight (Student forStudent, Course thisCourse, int weight, String assessmentName) {
+      MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
+      if (editMyCourse!= null) {
+         MyAssessment editMyAssessment = editMyCourse.searchMyAssessmentForStudent(assessmentName);
+         if (editMyAssessment != null) {
+            editMyAssessment.setAssessmentWeight(weight);
+            editMyAssessment.calcMark();
+         }
+      }
+   }
+   public void addAssessment (Course forCourse, String assessmentName) {
+      Scanner sc = new Scanner (System.in);
+      int num, den, weight;
+      int numStudent = forCourse.getNumStudent();
+      forCourse.getAllAssess().getAssessmentList().add(assessmentName);
+      for (int i = 0; i < numStudent; i++) {
+         System.out.print("Num Mark for Student " + forCourse.getStudentInCourseList().get(i).getStudent().getFirstName() + " : ");
+         num = Integer.parseInt(sc.nextLine());
+         System.out.print("Den Mark for Student " + forCourse.getStudentInCourseList().get(i).getStudent().getFirstName() + " : ");
+         den = Integer.parseInt(sc.nextLine());
+         System.out.print("Weight for Student " + forCourse.getStudentInCourseList().get(i).getStudent().getFirstName() + " : ");
+         weight = Integer.parseInt(sc.nextLine());
+      }
+   }
+   public void addAssessment (Student forStudent, Course forCourse, MyAssessment personalAssess){
+      MyCourse studentCourse = forCourse.searchMyCourseForStudent(forStudent);
+      studentCourse.getMarksList().add(personalAssess);
+   }
+   public int compareToExp (Teacher other) {
+      return this.beginTeach.compareToDate(other.getBeginTeach());
+   }
 
+
+   public String toString ()
+   {
+      String output = super.toString();
+      output = output + "\nBegin Teaching: " + beginTeach;
+      return output;
+   }
 }
