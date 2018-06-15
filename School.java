@@ -436,7 +436,12 @@ public class School {
 		return null;		// returns null if the ID was not found
 		
 	}
-    
+    public String toString ()
+	{
+		String output = "School Name: " + schoolName + "\nSchool ID: " + schoolID + "\nDate Established: " + dateEstablished;
+		return  output;
+	}
+
 	
 	
 }
