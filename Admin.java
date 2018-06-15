@@ -1,3 +1,4 @@
+import java.sql.Struct;
 import java.util.ArrayList;
 
 public class Admin extends User {
@@ -42,7 +43,13 @@ public class Admin extends User {
     }
     public void removeSchool (int schoolIndex)
     {
-        schoolList.remove(schoolIndex); 
+        schoolList.remove(schoolIndex);
+    }
+
+    public String toString ()
+    {
+        String output = super.toString();
+        return output;
     }
 
 
