@@ -132,7 +132,7 @@ public class Display {
 
                 System.out.println("The password or user name entered is invalid.");
                 System.out.println("Please try again");
-                
+
             }
         }
         if (userType.equalsIgnoreCase("STU")) {
@@ -280,6 +280,13 @@ public class Display {
                                 validInput = true;
                                 System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                         getCoursesTeaching().get(i));
+                                
+                                for (int k = 0; k <schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                                        getCoursesTeaching().get(i).getStudentInCourseList().size(); k ++)
+                                {
+                                    System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                                            getCoursesTeaching().get(i).getStudentInCourseList().get(k));
+                                }
                             }
 
                         }
