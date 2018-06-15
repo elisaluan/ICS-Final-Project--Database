@@ -1,6 +1,6 @@
 public class Principal extends User {
     private School schoolList;
-    
+
     public Principal (School other)
     {
         schoolList = other;
@@ -19,7 +19,7 @@ public class Principal extends User {
     {
         schoolList.listOfTeachers.add(teacher);
     }
-    public  void removeTeacher (String teacherID)
+    public  boolean removeTeacher (String teacherID)
     {
         for (int i = 0; i < schoolList.listOfTeachers.size(); i ++)
         {
@@ -34,6 +34,7 @@ public class Principal extends User {
 
     public String toString ()
     {
-        return "";
+        String output = super.toString();
+        return output;
     }
 }
