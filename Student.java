@@ -62,4 +62,11 @@ public class Student extends User {
    
    public void viewTranscript () {
    } 
+   public String toString ()
+   {
+      String output = "Student\nName: " + getFirstName() + " " + getLastName() + "\nStudent ID: " + getUserID()+
+              "\nGrade: " + grade + "\nBirth Date: " + getBirthDate() + "\nESL: " + esl + "\nInternational Student: " + internationalStudent
+              + "\nIEP: "+ iep;
+      return output;
+   }
 }
