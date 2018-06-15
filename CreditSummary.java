@@ -1,49 +1,22 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class CreditSummary {
-  
-	// FIELDS
-	
-  private ArrayList<CoursesByYear> yearList = new ArrayList<CoursesByYear>();
-  
-////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-  // CONSTRUCTORS
-  
-  public CreditSummary(ArrayList<CoursesByYear> course)
-  {
-	  int length = course.size();
-	  
-	  for(int i = 0 ; i < length ; i++)
-	  {
-		  yearList.add(course.get(i));
-	  }
-  }
-  
-////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-  // ACCESSORS
-  
-  public ArrayList<CoursesByYear> getYearList()
-  {
-	  return yearList;
-  }
-  
-////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-  // METHODS
-  
-  public String toString ()
-   {
-      String output = "";
-      for (int i = 0; i < yearList.size(); i ++)
-      {
-         output = "Year #" + i + ":\n" + output + yearList.get(i) + "\n//////////////////////\n";
-      }
-   return output;
+   private ArrayList <CoursesByYear> yearList = new ArrayList <CoursesByYear> ();
+   
+   // constructor
+   // accessor
+   public ArrayList<CoursesByYear> getYearList () {
+      return yearList;
    }
+   
+   // mutator
+   public void setYearList (ArrayList<CoursesByYear> yearList) {
+      this.yearList = yearList;
+   }
+   
+   // methods
 
-   public MyCourse searhByCourse (String course)
+   public MyCourse searchByCourse (String course)
    {
       for (int i =0; i < yearList.size(); i ++)
       {
@@ -60,5 +33,15 @@ public class CreditSummary {
       }
       return null;
    }
-}
 
+   public String toString ()
+   {
+      String output = "";
+      for (int i = 0; i < yearList.size(); i ++)
+      {
+         output = "Year #" + i + ":\n" + output + yearList.get(i) + "\n//////////////////////\n";
+      }
+   return output;
+   }
+
+}
