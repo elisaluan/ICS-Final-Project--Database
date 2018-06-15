@@ -28,6 +28,11 @@ public class CoursesBySemester {
       return average;
    }
    public String toString () {
-      return "";
+      String output = "";
+      for (int i = 0; i < courseList.size(); i ++)
+      {
+         output = output + courseList.get(i) + "\n//////////////////////////////////////////\n";
+      }
+      return output;
    }
 }
