@@ -37,15 +37,12 @@ public class CoursesByYear {
 	
 	// METHODS
 	
-	public String toString()
-	{
-		String output = "";
-		for(int i = 0 ; i < NUM_SEMESTERS ; i++)
-		{
-			output += semesterList[i];
-		}
-		return output;
-	}
+	public String toString ()
+   {
+      String output = "Semester #1: " + semesterList[0] + "\n//////////////////////////////////\nSemester #2: " 
+              + semesterList[1];
+      return output;
+   }
 
    public double calcYearAverage ()
    {
