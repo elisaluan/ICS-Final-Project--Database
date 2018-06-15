@@ -103,51 +103,42 @@ public class School {
 /////////////////////////////////////////////////////////////////
 	//Searching methods begin here
 	//Method to search for student given first name and last name using sequential search. Returns array of matching students
-	public Student[] searchForStudent(String firstName, String lastName)
+	public ArrayList<Student> searchForStudent(String firstName, String lastName)
 	{
-		boolean found = false;
-		int count = 0;
-		Student[] matches = new Student[listOfStudents.size()];
+		ArrayList<Student> matches = new ArrayList<Student>;
 		for (int i = 0; i < listOfStudents.size() && found = false; i++)
 		{
 			if (listOfStudents.get(i).getFirstName == firstName && listOfStudents.get(i).getLastName == lastName)
 			{
-				matches[count] = listOfStudents.get(i);
-				count++
+				matches.add(listOfStudents.get(i));
 			}
 		}    
     	return matches;
 	}
 	
 	//Method to search for teacher given first name and last name using sequential search. Returns array of matching teachers
-	public Teacher[] searchForTeacher(String firstName, String lastName)
+	public ArrayList<Teacher> searchForTeacher(String firstName, String lastName)
 	{
-		boolean found = false;
-		int count = 0;
-		Teacher[] matches = new Teacher[listOfTeachers.size()];
+		ArrayList<Teacher> matches = new ArrayList<Teacher>;
 		for (int i = 0; i < listOfTeachers.size() && found = false; i++)
 		{
 			if (listOfTeachers.get(i).getFirstName == firstName && listOfTeachers.get(i).getLastName == lastName)
 			{
-				matches[count] = listOfTeacher.get(i);
-				count++
+				matches.add(listOfTeachers.get(i));
 			}
 		}    
     	return matches;
 	}
 	
 	//Method to search for guidance counesllor given first name and last name using sequential search. Returns array of matching counsellors
-	public GuidanceCounsellor[] searchForGuidanceCounsellor(String firstName, String lastName)
+	public ArrayList<GuidanceCounsellor> searchForGuidanceCounsellor(String firstName, String lastName)
 	{
-		boolean found = false;
-		int count = 0;
-		GuidanceCounsellor[] matches = new GuidanceCounsellor[listOfGuidanceCounsellor.size()];
+		ArrayList<GuidanceCounsellor> matches = new ArrayList<GuidanceCounsellor>;
 		for (int i = 0; i < listOfGuidanceCouncellor.size() && found = false; i++)
 		{
 			if (listOfGuidanceCounsellor.get(i).getFirstName == firstName && listOfGuidanceCounsellor.get(i).getLastName == lastName)
 			{
-				matches[count] = listOfGuidanceCounsellor.get(i);
-				count++
+				matches.add(listOfGuidanceCounsellor.get(i));
 			}
 		}    
     	return matches;
