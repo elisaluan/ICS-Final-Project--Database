@@ -280,10 +280,11 @@ public class Display {
                                 validInput = true;
                                 System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                         getCoursesTeaching().get(i));
-                                
+
                                 for (int k = 0; k <schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                         getCoursesTeaching().get(i).getStudentInCourseList().size(); k ++)
                                 {
+                                    System.out.println("//////////////////////////////////////////");
                                     System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                             getCoursesTeaching().get(i).getStudentInCourseList().get(k));
                                 }
