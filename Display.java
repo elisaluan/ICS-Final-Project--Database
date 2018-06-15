@@ -256,12 +256,11 @@ public class Display {
 
                 if (choice.equalsIgnoreCase("A")) {
 
-                            for (int i = 0; i < schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
-                                    getCoursesTeaching().size(); i++) {
-                                System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
-                                        getCoursesTeaching().get(i));
-                            }
-
+                    for (int i = 0; i < schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                            getCoursesTeaching().size(); i++) {
+                        System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                                getCoursesTeaching().get(i));
+                    }
 
 
                     validInput = false;
@@ -281,9 +280,8 @@ public class Display {
                                 System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                         getCoursesTeaching().get(i));
 
-                                for (int k = 0; k <schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
-                                        getCoursesTeaching().get(i).getStudentInCourseList().size(); k ++)
-                                {
+                                for (int k = 0; k < schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                                        getCoursesTeaching().get(i).getStudentInCourseList().size(); k++) {
                                     System.out.println("//////////////////////////////////////////");
                                     System.out.println(schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                             getCoursesTeaching().get(i).getStudentInCourseList().get(k));
@@ -378,8 +376,7 @@ public class Display {
                     validInput = false;
 
 
-                }
-                else if (choice.equalsIgnoreCase("D")) {
+                } else if (choice.equalsIgnoreCase("D")) {
 
                     while (!validInput) {
                         System.out.println("Please enter the course code: ");
@@ -463,7 +460,6 @@ public class Display {
                                     getCoursesTeaching().get(numInput), choice);
 
 
-
                 } else if (choice.equalsIgnoreCase("F")) {
                     boolean nameFound = false;
                     String firstName, lastName;
@@ -518,7 +514,7 @@ public class Display {
                     System.out.print("Please enter the name of assessment: ");
                     choice = input.nextLine();
 
-                     schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
+                    schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                             updateAssessmentMark(student, (schoolArrayList.get(schoolIndex).getListOfTeachers().get(userIndex).
                                     getCoursesTeaching().get(numInput)), markNum, markDen, choice);
 
@@ -542,10 +538,10 @@ public class Display {
     }
 
 
-    public void guidanceOutput ()
-    {
+    public void guidanceOutput() {
 
     }
+
     public void principalOutput() {
         boolean logOut = false, validInput = false, teacherRemoved;
         String choice;
@@ -723,7 +719,7 @@ public class Display {
                     System.out.print("Please enter the name of the third course: ");
                     course3 = input.nextLine();
 
-                    Teacher teacher = new Teacher (/*Fields*/);
+                    Teacher teacher = new Teacher(/*Fields*/);
                     AcademicDatabase.getAdmin().addTeacher(schoolIndex, teacher);
                 } else if (choice.equalsIgnoreCase("D")) {
                     while (!schoolFound) {
