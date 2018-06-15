@@ -4,13 +4,13 @@ public class School {
 	
 	// FIELDS
 	
-    String schoolName;
-    String schoolID;
-    ArrayList <Student> listOfStudents = new ArrayList <Student>();
-    ArrayList <Teacher> listOfTeachers = new ArrayList <Teacher>();
-    ArrayList <GuidanceCounsellor> listOfGuidanceCouns = new ArrayList <GuidanceCounsellor>();
-    Principal principal;
-    Date dateEstablished;
+    private String schoolName;
+    private String schoolID;
+    private ArrayList <Student> listOfStudents = new ArrayList <Student>();
+    private ArrayList <Teacher> listOfTeachers = new ArrayList <Teacher>();
+    private ArrayList <GuidanceCounsellor> listOfGuidanceCouns = new ArrayList <GuidanceCounsellor>();
+    private Principal principal;
+    private Date dateEstablished;
     
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -59,6 +59,11 @@ public class School {
     public ArrayList<GuidanceCounsellor> getListOfGuidanceCouns()
     {
     	return listOfGuidanceCouns;
+    }
+    
+    public Principal getPrincipal()
+    {
+    	return principal;
     }
     
     public Date getDateEstablished()
@@ -370,7 +375,7 @@ public class School {
     	return matches;
 	}
 	
-	//Method to search for Student by their Student ID
+	//METHOD TO SEARCH FOR STUDENT BY THEIR ID USING SEQUENTIAL SEARCH
 	public Student searchForStudentID(String ID) {
 		
 		int length = listOfStudents.size();
@@ -379,27 +384,43 @@ public class School {
 			
 			Student stud = listOfStudents.get(i); // to avoid repetitive method calling
 			
-			if(stud.getUserID() == ID) { //if the ID matches, it return that student object
+			if(stud.getUserID() == ID) {
+				
+				//checks if ID of the student in the current index matches with the search for ID
+				// returns the Student object
+				
 				return stud;
 			}
 		}
 		return null; // returns nothing if not found;
 	}
 	
-	// Method to search for Teacher by their Teacher ID
+	// METHOD TO SEARCH FOR TEACHER BY THEIR ID USING BINARY
+	// THIS METHOD ONLY WORK IF THE ARRAYLIST IS SORTED ACCORDINGLY
 	public Teacher searchForTeacherID(String ID) {
 		
-		int bot = 0;									//make bot 0
-		int top = listOfTeachers.size() - 1;			//make top the last index of the array
-		boolean found = false;							//initializes a boolean to control when to exit the loop when found
+		//make bot 0
+		//make top the last index of the array
+		//initializes a boolean to control when to exit the loop when found		
+				
+		int bot = 0;
+		int top = listOfTeachers.size() - 1;
+		boolean found = false;
 		
-		while(bot <= top  && found == false) {			//loop through the lowerbound index up to the upperbound index
-			int mid  = (bot +  top) / 2;				// sets the mid to be the middle in of the upperbound and lowerbound index
+		while(bot <= top  && found == false) {
+			
+			//loop through the lowerbound index up to the upperbound index
+			// sets the mid to be the middle in of the upperbound and lowerbound index
+			
+			int mid  = (bot +  top) / 2;
 			
 			if(ID.equals(listOfTeachers.get(mid).getUserID())) {
 				
-				found = true;							//makes found true to enable an exit in the loop
-				return listOfTeachers.get(mid);			//returns the Teacher object if found
+				//makes found true to enable an exit in the loop
+				//returns the Teacher object if found
+				
+				found = true;
+				return listOfTeachers.get(mid);			
 				
 			}else if(listOfTeachers.get(mid).getUserID().compareTo(ID) > 0) {	//if the ID of the current index comes after the searched ID, it cuts everything before the middle index 
 			
