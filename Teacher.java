@@ -44,12 +44,15 @@ public class Teacher extends User {
          return false;
    }
    */
+   //method to update the student's overall average
    public void updateOverallAverage (Student forStudent, Course thisCourse, double toAverage) {
       MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
       if (editMyCourse != null) {
          editMyCourse.setWeightedAverage(toAverage);
       }
    }
+   
+   //method to update a student's mark for an assessment
    public void updateAssessmentMark (Student forStudent, Course thisCourse, int markNum, int markDen, String assessmentName) {
       MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
       if (editMyCourse!= null) {
@@ -61,6 +64,8 @@ public class Teacher extends User {
          }
       }
    }
+   
+   //method to update the weight of an assessment
    public void updateAssessmentWeight (Student forStudent, Course thisCourse, int weight, String assessmentName) {
       MyCourse editMyCourse = thisCourse.searchMyCourseForStudent(forStudent);
       if (editMyCourse!= null) {
@@ -71,6 +76,8 @@ public class Teacher extends User {
          }
       }
    }
+   
+   //method to add an assessment to a course
    public void addAssessment (Course forCourse, String assessmentName) {
       Scanner sc = new Scanner (System.in);
       int num, den, weight;
@@ -85,6 +92,8 @@ public class Teacher extends User {
          weight = Integer.parseInt(sc.nextLine());
       }
    }
+   
+   //method to add an assessment to a student
    public void addAssessment (Student forStudent, Course forCourse, MyAssessment personalAssess){
       MyCourse studentCourse = forCourse.searchMyCourseForStudent(forStudent);
       studentCourse.getMarksList().add(personalAssess);
@@ -93,7 +102,7 @@ public class Teacher extends User {
       return this.beginTeach.compareToDate(other.getBeginTeach());
    }
 
-
+   //toString method to output the teacher's information
    public String toString ()
    {
       String output = super.toString();
