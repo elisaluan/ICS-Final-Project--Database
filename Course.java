@@ -66,6 +66,7 @@ public class Course {
       }
    }
 
+   //method to sort students by first name alphabetically
    public void sortFirstNameAZ() {
       int count;
       String temp;
@@ -78,6 +79,7 @@ public class Course {
       }
    }
 
+   //method to sort students by mark from high to low
    public void sortStudentMarkHL () {
       int lengthList = numStudent;
       int highestIndex = 0;
@@ -93,6 +95,7 @@ public class Course {
       }
    }
 
+   //method to sort students by mark from low to high
    public void sortStudentMarkLH () {
       int lengthList = numStudent;
       int highestIndex = 0;
@@ -108,6 +111,7 @@ public class Course {
       }
    }
 
+   //method to sort students by ID
    public void sortStudentByID () {
       int listLength = numStudent;
       boolean sorted = false;
@@ -130,6 +134,7 @@ public class Course {
       }
    }
 
+   //method that returns the student with the highest average
    public Student searchHighestAvg () {
       int index = 0;
       int listLength = numStudent;
@@ -142,6 +147,8 @@ public class Course {
 
       return studentInCourseList.get(index).getStudent();
    }
+   
+   //method that searches for a student by their ID
    public Student searchStudentByID (String findUserID) {
       int index = -1;
       int bottom = 0;
@@ -166,6 +173,7 @@ public class Course {
       return studentInCourseList.get(index).getStudent();
    }
 
+   //method that searches a student by name
    public Student searchStudentByName (String firstName, String lastName) {
       int index = -1;
       int listLength = numStudent;
@@ -183,6 +191,7 @@ public class Course {
       }
    }
 
+   //method that searches for a student in a course
    public MyCourse searchMyCourseForStudent (Student student) {
       int index = -1;
       int listLength = numStudent;
@@ -200,6 +209,7 @@ public class Course {
       this.complete = true;
    }
 
+   //toString method that returns the information of the course as a string
    public String toString () {
       String output = "Couse Code: " + courseCode + "\n" + average + "\nStudent Number: " +
               numStudent + "\nCourse Completed: " + complete;
